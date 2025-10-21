@@ -1,5 +1,5 @@
 // Nombre del caché para nuestra aplicación
-const CACHE_NAME = 'notti-calc-v12'; // Incrementamos la versión del caché
+const CACHE_NAME = 'guiapedia-v1'; // Cambiamos el nombre del caché
 
 // Lista de archivos esenciales para que la app funcione offline
 const urlsToCache = [
@@ -27,7 +27,8 @@ self.addEventListener('activate', event => {
     caches.keys().then(cacheNames => {
       return Promise.all(
         cacheNames.filter(cacheName => {
-          return cacheName.startsWith('notti-calc-') && cacheName !== CACHE_NAME;
+          // Ahora buscamos cachés que comiencen con 'guiapedia-'
+          return cacheName.startsWith('guiapedia-') && cacheName !== CACHE_NAME;
         }).map(cacheName => {
           return caches.delete(cacheName);
         })
