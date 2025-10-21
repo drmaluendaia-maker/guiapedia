@@ -1,0 +1,722 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía Pediátrica Notti</title>
+    
+    <!-- Metadatos y enlaces para PWA -->
+    <meta name="theme-color" content="#4f46e5"/>
+    <meta name="description" content="Calculadora y guías de dosis y reposiciones para residentes de pediatría del Hospital Notti.">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="https://placehold.co/192x192/4f46e5/ffffff?text=Notti">
+
+    <!-- Tailwind CSS para diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Iconos (Feather Icons) -->
+    <script src="https://unpkg.com/feather-icons"></script>
+
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f4f8;
+        }
+        #install-button { display: none; }
+        .main-menu-button {
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+        .main-menu-button:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+        }
+        .card, .page {
+            background-color: white;
+            border-radius: 1rem;
+            box-shadow: 0 10px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+        }
+        .result-card {
+            background-color: #eef2ff;
+            border-left: 4px solid #4f46e5;
+        }
+        .btn-primary {
+            background-color: #4f46e5;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .btn-primary:hover { background-color: #4338ca; }
+        .btn-secondary {
+            background-color: #6b7280;
+            color: white;
+            transition: background-color 0.3s;
+        }
+        .btn-secondary:hover { background-color: #4b5563; }
+        .input-field, .select-field {
+            border: 1px solid #d1d5db;
+            transition: border-color 0.3s, box-shadow 0.3s;
+        }
+        .input-field:focus, .select-field:focus {
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 2px rgba(79, 70, 229, 0.2);
+            outline: none;
+        }
+        .page {
+            display: none; /* Ocultar páginas por defecto */
+        }
+        .page.active {
+            display: block; /* Mostrar página activa */
+        }
+        .tab-button {
+            border-bottom: 2px solid transparent;
+        }
+        .tab-button.active {
+            border-color: #4f46e5;
+            color: #4f46e5;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        details > summary {
+            list-style: none;
+            cursor: pointer;
+        }
+        details > summary::-webkit-details-marker {
+            display: none;
+        }
+        details summary .feather-chevron-down {
+            transition: transform 0.2s;
+        }
+        details[open] summary .feather-chevron-down {
+            transform: rotate(180deg);
+        }
+    </style>
+</head>
+<body class="antialiased text-gray-800">
+
+    <div class="container mx-auto p-4 max-w-3xl">
+        <header class="text-center mb-6">
+            <h1 class="text-3xl font-bold text-gray-900">Guía Pediátrica Notti</h1>
+            <p class="text-gray-600 mt-1">Herramienta de cálculo y consulta para residentes.</p>
+            <button id="install-button" class="mt-4 px-4 py-2 bg-green-500 text-white rounded-lg shadow-md hover:bg-green-600">Instalar Aplicación</button>
+        </header>
+
+        <main>
+            <!-- Menú Principal -->
+            <div id="main-menu" class="page active">
+                <div class="grid grid-cols-2 gap-4">
+                    <button onclick="showPage('calculators-page')" class="main-menu-button bg-white p-4 rounded-xl shadow-md flex flex-col items-center justify-center text-center">
+                        <i data-feather="cpu" class="w-10 h-10 text-indigo-600 mb-2"></i>
+                        <h2 class="text-md font-semibold">Calculadoras</h2>
+                    </button>
+                    <button onclick="showPage('guides-page')" class="main-menu-button bg-white p-4 rounded-xl shadow-md flex flex-col items-center justify-center text-center">
+                        <i data-feather="book-open" class="w-10 h-10 text-green-600 mb-2"></i>
+                        <h2 class="text-md font-semibold">Normas y Guías</h2>
+                    </button>
+                    <button onclick="showPage('vademecum-page')" class="main-menu-button bg-white p-4 rounded-xl shadow-md flex flex-col items-center justify-center text-center">
+                         <i data-feather="clipboard" class="w-10 h-10 text-yellow-600 mb-2"></i>
+                        <h2 class="text-md font-semibold">Vademécum</h2>
+                    </button>
+                    <button onclick="showPage('urgencias-page')" class="main-menu-button bg-white p-4 rounded-xl shadow-md flex flex-col items-center justify-center text-center">
+                        <i data-feather="alert-triangle" class="w-10 h-10 text-red-600 mb-2"></i>
+                        <h2 class="text-md font-semibold">Urgencias</h2>
+                    </button>
+                     <button onclick="showPage('texts-page')" class="main-menu-button bg-white p-4 rounded-xl shadow-md flex flex-col items-center justify-center text-center">
+                        <i data-feather="file-text" class="w-10 h-10 text-purple-600 mb-2"></i>
+                        <h2 class="text-md font-semibold">Textos de Interés</h2>
+                    </button>
+                    <button onclick="showPage('apps-page')" class="main-menu-button bg-white p-4 rounded-xl shadow-md flex flex-col items-center justify-center text-center">
+                        <i data-feather="smartphone" class="w-10 h-10 text-cyan-600 mb-2"></i>
+                        <h2 class="text-md font-semibold">Apps de Interés</h2>
+                    </button>
+                    <button onclick="showPage('downloads-page')" class="main-menu-button bg-white p-4 rounded-xl shadow-md flex flex-col items-center justify-center text-center col-span-2">
+                        <i data-feather="download-cloud" class="w-10 h-10 text-blue-600 mb-2"></i>
+                        <h2 class="text-md font-semibold">Descargas PDF</h2>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Página de Calculadoras -->
+            <div id="calculators-page" class="page">
+                <button onclick="showPage('main-menu')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="space-y-4">
+                     <button onclick="showPage('php-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Plan de Hidratación Parenteral (PHP)</button>
+                     <button onclick="showPage('disnatremias-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Corrección de Disnatremias</button>
+                     <button onclick="showPage('scores-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Scores Clínicos</button>
+                </div>
+            </div>
+            
+            <!-- Página de la Calculadora PHP -->
+            <div id="php-calculator-page" class="page">
+                 <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Plan de Hidratación Parenteral (PHP)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="peso-php" class="block text-sm font-medium text-gray-700">Peso del paciente (kg)</label>
+                            <input type="number" id="peso-php" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 15">
+                        </div>
+                        <div>
+                            <label for="deshidratacion-php" class="block text-sm font-medium text-gray-700">% de Deshidratación</label>
+                            <input type="number" id="deshidratacion-php" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 8">
+                        </div>
+                    </div>
+                    <div class="mt-6"><button onclick="calcularPHP()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Plan</button></div>
+                    <div id="resultado-php" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultados del Plan para 24h:</h3>
+                        <div class="result-card p-4 rounded-lg space-y-3">
+                            <p><strong>Necesidades Basales:</strong> <span id="nb-result" class="font-mono"></span> ml</p>
+                            <p><strong>Déficit Previo:</strong> <span id="dp-result" class="font-mono"></span> ml</p>
+                            <p class="text-indigo-800 font-bold"><strong>Volumen Total (24h):</strong> <span id="vt-result" class="font-mono text-xl"></span> ml</p>
+                            <p><strong>Goteo:</strong> <span id="goteo-result" class="font-mono"></span> ml/h (~<span id="macrogoteo-result"></span> macrogotas/min)</p>
+                            <hr class="my-3 border-indigo-200">
+                            <h4 class="font-semibold">Composición del Sachet (para 500ml Dextrosa 5%):</h4>
+                            <p>Añadir <span id="nacl-result" class="font-mono font-bold text-indigo-800"></span> ml de NaCl 20%</p>
+                            <p>Añadir <span id="kcl-result" class="font-mono font-bold text-indigo-800"></span> ml de KCl 1M</p>
+                            <hr class="my-3 border-indigo-200">
+                            <h4 class="font-semibold">Flujos de Seguridad:</h4>
+                            <p><strong>Flujo de Glucosa:</strong> <span id="flujo-glucosa" class="font-mono"></span> mg/kg/min</p>
+                            <p><strong>Flujo de Potasio:</strong> <span id="flujo-potasio" class="font-mono"></span> mEq/kg/hora</p>
+                        </div>
+                        <div id="detalles-php-content" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página de la Calculadora de Disnatremias -->
+            <div id="disnatremias-calculator-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Corrección de Disnatremias</h2>
+                    <div class="border-b border-gray-200">
+                        <nav class="-mb-px flex space-x-6" aria-label="Tabs">
+                            <button onclick="openTab(event, 'hiponatremia')" id="hipo-tab-button" class="tab-button whitespace-nowrap py-3 px-1 font-medium text-sm active">Hiponatremia</button>
+                            <button onclick="openTab(event, 'hipernatremia')" class="tab-button whitespace-nowrap py-3 px-1 font-medium text-sm">Hipernatremia</button>
+                        </nav>
+                    </div>
+
+                    <div id="hiponatremia" class="tab-content mt-6 active">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="peso-hipo" class="block text-sm font-medium text-gray-700">Peso (kg)</label>
+                                <input type="number" id="peso-hipo" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 10">
+                            </div>
+                            <div>
+                                <label for="na-actual-hipo" class="block text-sm font-medium text-gray-700">Sodio Actual (mEq/L)</label>
+                                <input type="number" id="na-actual-hipo" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 120">
+                            </div>
+                        </div>
+                        <div class="mt-4">
+                            <label class="flex items-center">
+                                <input type="checkbox" id="sintomatico-hipo" class="rounded h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                <span class="ml-2 text-sm text-gray-600">Sintomático (convulsiones)</span>
+                            </label>
+                        </div>
+                        <div class="mt-6"><button onclick="calcularHiponatremia()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Corrección de Hiponatremia</button></div>
+                        <div id="resultado-hipo" class="mt-6 hidden">
+                            <h3 class="font-semibold text-lg mb-2">Plan de Corrección:</h3>
+                            <div id="resultado-hipo-content" class="result-card p-4 rounded-lg space-y-3"></div>
+                            <div id="detalles-hipo-content" class="mt-4"></div>
+                        </div>
+                    </div>
+
+                    <div id="hipernatremia" class="tab-content mt-6">
+                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="peso-hiper" class="block text-sm font-medium text-gray-700">Peso (kg)</label>
+                                <input type="number" id="peso-hiper" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 12">
+                            </div>
+                            <div>
+                                <label for="na-actual-hiper" class="block text-sm font-medium text-gray-700">Sodio Actual (mEq/L)</label>
+                                <input type="number" id="na-actual-hiper" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 165">
+                            </div>
+                        </div>
+                        <div class="mt-6"><button onclick="calcularHipernatremia()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Corrección de Hipernatremia</button></div>
+                        <div id="resultado-hiper" class="mt-6 hidden">
+                            <h3 class="font-semibold text-lg mb-2">Plan de Corrección:</h3>
+                            <div id="resultado-hiper-content" class="result-card p-4 rounded-lg space-y-3"></div>
+                            <div id="detalles-hiper-content" class="mt-4"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Página de la Calculadora de Scores Clínicos -->
+            <div id="scores-calculator-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Score de TAL (Dificultad Respiratoria)</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="tal-edad" class="block text-sm font-medium text-gray-700">Grupo de Edad</label>
+                            <select id="tal-edad" onchange="actualizarFRTal()" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="mayor">&ge; 6 meses</option>
+                                <option value="menor">&lt; 6 meses</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="tal-fr" class="block text-sm font-medium text-gray-700">Frecuencia Respiratoria</label>
+                            <select id="tal-fr" class="mt-1 block w-full rounded-md select-field p-2">
+                                <!-- Opciones se cargarán dinámicamente -->
+                            </select>
+                        </div>
+                        <div>
+                            <label for="tal-sibilancias" class="block text-sm font-medium text-gray-700">Sibilancias</label>
+                            <select id="tal-sibilancias" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="0">No</option>
+                                <option value="1">Final de espiración (con estetoscopio)</option>
+                                <option value="2">Toda la espiración (con estetoscopio)</option>
+                                <option value="3">Inspiración y espiración (sin estetoscopio)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="tal-musculatura" class="block text-sm font-medium text-gray-700">Uso de musculatura accesoria</label>
+                            <select id="tal-musculatura" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="0">No</option>
+                                <option value="1">Leve (tiraje intercostal)</option>
+                                <option value="2">Moderado (tiraje subcostal, supraesternal)</option>
+                                <option value="3">Intenso (aleteo nasal)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6"><button onclick="calcularScoreTal()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Score de TAL</button></div>
+                    <div id="resultado-tal" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div id="resultado-tal-content" class="result-card p-4 rounded-lg space-y-2"></div>
+                        <div id="protocolo-tal-content" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página de Normas y Guías -->
+            <div id="guides-page" class="page">
+                <button onclick="showPage('main-menu')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="space-y-2"><div class="bg-gray-100 p-3 rounded-lg">Próximamente...</div></div>
+            </div>
+
+            <!-- Página de Vademécum -->
+            <div id="vademecum-page" class="page">
+                <button onclick="showPage('main-menu')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6 space-y-4">
+                    <h2 class="text-xl font-semibold border-b pb-2">Vademécum (H. Garrahan)</h2>
+                    <a href="https://farmacia.garrahan.gov.ar/Vademecum/Busqueda" target="_blank" rel="noopener noreferrer" class="block w-full text-left bg-yellow-50 p-4 rounded-lg hover:bg-yellow-100 transition flex items-center"><i data-feather="search" class="w-5 h-5 mr-3 text-yellow-700"></i>Búsqueda General</a>
+                    <a href="https://farmacia.garrahan.gov.ar/Vademecum/BusquedaGrupoTerapeutico" target="_blank" rel="noopener noreferrer" class="block w-full text-left bg-yellow-50 p-4 rounded-lg hover:bg-yellow-100 transition flex items-center"><i data-feather="list" class="w-5 h-5 mr-3 text-yellow-700"></i>Índice por Grupo Terapéutico</a>
+                    <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/tablas/aca.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="block w-full text-left bg-yellow-50 p-4 rounded-lg hover:bg-yellow-100 transition flex items-center"><i data-feather="file-text" class="w-5 h-5 mr-3 text-yellow-700"></i>Medicamentos para Celíacos</a>
+                </div>
+            </div>
+
+            <!-- Página de Urgencias -->
+             <div id="urgencias-page" class="page">
+                <button onclick="showPage('main-menu')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6 space-y-4">
+                    <h2 class="text-xl font-semibold border-b pb-2">Drogas en Urgencias Pediátricas</h2>
+                    <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/instructivo_para_el_uso_tablas.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="block w-full text-left bg-red-50 p-4 rounded-lg hover:bg-red-100 transition flex items-center"><i data-feather="help-circle" class="w-5 h-5 mr-3 text-red-700"></i>Instructivo de Uso</a>
+                    <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/anexo.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="block w-full text-left bg-red-50 p-4 rounded-lg hover:bg-red-100 transition flex items-center"><i data-feather="paperclip" class="w-5 h-5 mr-3 text-red-700"></i>Anexo I: Preparación</a>
+                    <h3 class="font-semibold pt-4">Tablas por Peso:</h3>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-2 text-center">
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/5_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">5 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/6_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">6 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/7_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">7 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/8_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">8 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/9_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">9 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/10_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">10 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/12_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">12 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/14_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">14 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/16_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">16 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/18_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">18 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/20_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">20 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/25_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">25 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/30_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">30 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/35_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">35 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/40_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">40 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/50_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">50 kg</a>
+                        <a href="https://docs.google.com/gview?url=https://www.garrahan.gov.ar/PDFS/medicamentos/cards/60_kg.pdf&embedded=true" target="_blank" rel="noopener noreferrer" class="bg-gray-100 p-2 rounded hover:bg-gray-200">60 kg</a>
+                    </div>
+                </div>
+            </div>
+
+             <!-- Página de Textos de Interés -->
+            <div id="texts-page" class="page">
+                <button onclick="showPage('main-menu')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold border-b pb-2">Textos de Interés</h2>
+                    <p class="text-gray-500 mt-4">Esta sección se encuentra en desarrollo.</p>
+                </div>
+            </div>
+            
+            <!-- Página de Apps de Interés -->
+            <div id="apps-page" class="page">
+                <button onclick="showPage('main-menu')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold border-b pb-2 mb-4">Apps de Interés</h2>
+                    <div class="bg-white p-4 rounded-lg border">
+                        <h3 class="font-semibold text-lg">SAP Mobile</h3>
+                        <p class="text-gray-600 text-sm mt-1 mb-4">La app oficial de la Sociedad Argentina de Pediatría. Una herramienta esencial para la evaluación del crecimiento físico y la presión arterial, utilizando curvas y referencias validadas en Argentina.</p>
+                        <div class="flex space-x-4">
+                            <a href="https://play.google.com/store/apps/details?id=ar.sap.sap_mobile" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-gray-800 text-white py-2 px-3 rounded-lg hover:bg-black transition">Android</a>
+                            <a href="https://apps.apple.com/app/sap-mobile/id1667951018" target="_blank" rel="noopener noreferrer" class="flex-1 text-center bg-blue-500 text-white py-2 px-3 rounded-lg hover:bg-blue-600 transition">iOS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página de Descargas -->
+            <div id="downloads-page" class="page">
+                 <button onclick="showPage('main-menu')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6 space-y-4">
+                    <h2 class="text-xl font-semibold border-b pb-2">Normas de Residencia</h2>
+                    <a href="https://drive.google.com/file/d/1PbrHaiKNjaVqYuyQmkdBynQYuQsKobRP/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="block w-full text-left bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition flex items-center"><i data-feather="external-link" class="w-5 h-5 mr-3 text-blue-600"></i><span>Normas 2024.pdf</span></a>
+                    <a href="https://drive.google.com/file/d/12UMDYyphx-IvpD1Z6mjoU-wi_0x35DVT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="block w-full text-left bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition flex items-center"><i data-feather="external-link" class="w-5 h-5 mr-3 text-blue-600"></i><span>Normas 2022.pdf</span></a>
+                    <div class="block w-full text-left bg-gray-100 p-4 rounded-lg opacity-60 flex items-center"><i data-feather="clock" class="w-5 h-5 mr-3 text-gray-500"></i><span>Normas 2025 (En proceso...)</span></div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // --- Lógica de Navegación y Aplicación ---
+        feather.replace();
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('./service-worker.js')
+                    .then(registration => console.log('ServiceWorker registrado con éxito:', registration.scope))
+                    .catch(err => console.log('Fallo en el registro de ServiceWorker:', err));
+            });
+        }
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            const pageToShow = document.getElementById(pageId);
+            if (pageToShow) pageToShow.classList.add('active');
+        }
+        
+        // --- Lógica de Calculadoras ---
+
+        function calcularPHP() {
+            const peso = parseFloat(document.getElementById('peso-php').value);
+            const deshidratacion = parseFloat(document.getElementById('deshidratacion-php').value);
+            const detallesDiv = document.getElementById('detalles-php-content');
+
+            if (isNaN(peso) || peso <= 0 || isNaN(deshidratacion) || deshidratacion < 0) {
+                 document.getElementById('resultado-php').classList.add('hidden');
+                 return;
+            }
+            
+            let nb;
+            if (peso <= 10) { nb = peso * 100; } 
+            else if (peso <= 20) { nb = 1000 + (peso - 10) * 50; } 
+            else { nb = 1500 + (peso - 20) * 20; }
+            const dp = peso * deshidratacion * 10;
+            const vt = nb + dp;
+            const goteo = vt / 24;
+            const macrogoteo = (goteo * 20) / 60;
+            const naRequeridoPorLitro = 140;
+            const kRequeridoPorLitro = 20;
+            const mlNaCl500 = (naRequeridoPorLitro / 3.4) / 2;
+            const mlKCl500 = (kRequeridoPorLitro / 1) / 2;
+            const flujoGlucosa = (goteo * 50) / (peso * 60);
+            const flujoPotasio = (goteo * (kRequeridoPorLitro / 1000)) / peso;
+            
+            document.getElementById('nb-result').textContent = nb.toFixed(0);
+            document.getElementById('dp-result').textContent = dp.toFixed(0);
+            document.getElementById('vt-result').textContent = vt.toFixed(0);
+            document.getElementById('goteo-result').textContent = goteo.toFixed(1);
+            document.getElementById('macrogoteo-result').textContent = macrogoteo.toFixed(0);
+            document.getElementById('nacl-result').textContent = mlNaCl500.toFixed(1);
+            document.getElementById('kcl-result').textContent = mlKCl500.toFixed(1);
+            document.getElementById('flujo-glucosa').textContent = flujoGlucosa.toFixed(2);
+            document.getElementById('flujo-potasio').textContent = flujoPotasio.toFixed(2);
+            
+            const htmlDetalles = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Detalles del Cálculo y Clínica</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-3">
+                        <div>
+                            <h5 class="font-semibold mb-1">1. Estimación del Grado de Deshidratación</h5>
+                            <p>El % de deshidratación se estima clínicamente. Un ${deshidratacion}% corresponde a una deshidratación <strong>${deshidratacion < 5 ? 'Leve' : (deshidratacion <= 10 ? 'Moderada' : 'Grave')}</strong>. Busque signos como sequedad de mucosas, pliegue cutáneo, ojos hundidos y relleno capilar enlentecido.</p>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold mb-1">2. Desglose del Cálculo del Volumen</h5>
+                            <p><strong>- Necesidades Basales (NB):</strong> Es el líquido que el cuerpo necesita en 24h para funciones básicas. Se calcula con la fórmula de Holliday-Segar.</p>
+                            <p class="font-mono text-xs bg-gray-100 p-2 rounded">Cálculo para ${peso} kg: ${nb.toFixed(0)} ml</p>
+                            <p><strong>- Déficit Previo (DP):</strong> Es el volumen de líquido perdido que se debe reponer.</p>
+                            <p class="font-mono text-xs bg-gray-100 p-2 rounded">Cálculo: ${peso} kg * ${deshidratacion}% * 10 = ${dp.toFixed(0)} ml</p>
+                            <p><strong>- Volumen Total (VT):</strong> Es la suma de ambos componentes para las primeras 24 horas de tratamiento.</p>
+                             <p class="font-mono text-xs bg-gray-100 p-2 rounded">Cálculo: ${nb.toFixed(0)} ml (NB) + ${dp.toFixed(0)} ml (DP) = ${vt.toFixed(0)} ml</p>
+                        </div>
+                         <div>
+                            <h5 class="font-semibold mb-1">3. Composición de la Solución</h5>
+                            <p>Se utiliza una solución isotónica (Na+ 130-154 mEq/L) para prevenir la hiponatremia iatrogénica. Un aporte estándar es Na+ 140 mEq/L y K+ 20 mEq/L. El flujo de glucosa debe mantenerse entre 3-6 mg/kg/min para evitar cetosis e hipoglucemia.</p>
+                        </div>
+                    </div>
+                </details>
+            `;
+            detallesDiv.innerHTML = htmlDetalles;
+            document.getElementById('resultado-php').classList.remove('hidden');
+            feather.replace();
+        }
+
+        function openTab(evt, tabName) {
+            document.querySelectorAll('.tab-content').forEach(tc => tc.style.display = "none");
+            document.querySelectorAll('.tab-button').forEach(tb => tb.classList.remove('active'));
+            document.getElementById(tabName).style.display = "block";
+            evt.currentTarget.classList.add('active');
+        }
+
+        function calcularHiponatremia() {
+            const peso = parseFloat(document.getElementById('peso-hipo').value);
+            const naActual = parseFloat(document.getElementById('na-actual-hipo').value);
+            const esSintomatico = document.getElementById('sintomatico-hipo').checked;
+            const resultadoDiv = document.getElementById('resultado-hipo-content');
+            const detallesDiv = document.getElementById('detalles-hipo-content');
+            
+            if (isNaN(peso) || peso <= 0 || isNaN(naActual) || naActual >= 135) {
+                resultadoDiv.innerHTML = `<p class="text-red-600">Por favor, ingrese un peso válido y un sodio actual menor a 135 mEq/L.</p>`;
+                detallesDiv.innerHTML = '';
+                document.getElementById('resultado-hipo').classList.remove('hidden');
+                return;
+            }
+
+            let htmlResult = '';
+            let htmlDetalles = '';
+
+            if (esSintomatico) {
+                const meqSodio = 2 * peso;
+                const volClNa3 = meqSodio / 0.513;
+                htmlResult = `
+                    <h4 class="font-semibold text-red-700">Corrección Rápida (Sintomático)</h4>
+                    <p>Administrar un bolo de <strong class="font-mono">${volClNa3.toFixed(1)} ml</strong> de Cloruro de Sodio al 3%.</p>
+                    <p class="text-sm text-gray-600">Esto aportará ${meqSodio.toFixed(1)} mEq de Sodio (2 mEq/kg).</p>
+                    <p class="text-sm text-gray-600">Pasar en 20-30 minutos y reevaluar.</p>
+                `;
+                htmlDetalles = `
+                    <details class="mt-4 border-t pt-3">
+                        <summary class="font-medium text-gray-700 flex justify-between items-center">
+                            <span>Ver Detalles del Cálculo y Riesgos</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                        </summary>
+                        <div class="mt-2 text-sm text-gray-600 space-y-2">
+                            <p><strong>Riesgo Principal:</strong> La hiponatremia sintomática es una emergencia por el edema cerebral. El objetivo es aumentar el Na+ lo suficiente para detener los síntomas (ej. convulsiones), no para normalizarlo.</p>
+                            <p><strong>Cálculo del Bolo:</strong> Se basa en administrar una dosis segura de soluto (1-2 mEq/kg de Sodio). Usamos 2 mEq/kg. La solución de ClNa al 3% contiene ~0.513 mEq de Na+ por ml.</p>
+                            <p class="font-mono text-xs bg-gray-100 p-2 rounded">Cálculo: (2 mEq/kg * ${peso} kg) / 0.513 mEq/ml = ${volClNa3.toFixed(1)} ml</p>
+                        </div>
+                    </details>
+                `;
+            } else {
+                const naDeseado = 125;
+                const deficit = 0.6 * peso * (naDeseado - naActual);
+                if (deficit <= 0) {
+                     htmlResult = `<p>El sodio actual está por encima del objetivo de corrección inicial (125 mEq/L). No se requiere corrección de déficit.</p>`;
+                     htmlDetalles = '';
+                } else {
+                    const volClNa3 = deficit / 0.513;
+                    const ritmoMaximo = 8;
+                    const aumentoNecesario = naDeseado - naActual;
+                    const horasInfusion = (aumentoNecesario / ritmoMaximo) * 24;
+                    const goteo = volClNa3 / horasInfusion;
+
+                    htmlResult = `
+                        <h4 class="font-semibold">Corrección Lenta (Asintomático)</h4>
+                        <p><strong>Déficit de Sodio (hasta 125 mEq/L):</strong> <span class="font-mono">${deficit.toFixed(1)} mEq</span></p>
+                        <p><strong>Volumen de ClNa 3% a infundir:</strong> <span class="font-mono">${volClNa3.toFixed(1)} ml</span></p>
+                        <p><strong>Tiempo de infusión sugerido:</strong> <span class="font-mono">${horasInfusion.toFixed(0)} horas</span></p>
+                        <p><strong>Goteo:</strong> <span class="font-mono">${goteo.toFixed(1)} ml/h</span></p>
+                    `;
+                    htmlDetalles = `
+                        <details class="mt-4 border-t pt-3">
+                            <summary class="font-medium text-gray-700 flex justify-between items-center">
+                                <span>Ver Detalles del Cálculo y Riesgos</span>
+                                <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                            </summary>
+                            <div class="mt-2 text-sm text-gray-600 space-y-2">
+                                <p><strong>Riesgo Principal:</strong> Una corrección demasiado rápida puede causar <strong>Síndrome de Desmielinización Osmótica (SDO)</strong>, un daño neurológico irreversible. La regla de oro es <strong>NO</strong> aumentar el sodio más de 8-10 mEq/L en 24 horas.</p>
+                                <p><strong>Cálculo del Déficit:</strong> Se calcula la cantidad de sodio necesaria para llevar el Na+ actual a un nivel seguro (125 mEq/L) usando el Agua Corporal Total (ACT = 60% del peso).</p>
+                                <p class="font-mono text-xs bg-gray-100 p-2 rounded">Cálculo: 0.6 * ${peso} kg * (125 - ${naActual} mEq/L) = ${deficit.toFixed(1)} mEq</p>
+                            </div>
+                        </details>
+                    `;
+                }
+            }
+            resultadoDiv.innerHTML = htmlResult;
+            detallesDiv.innerHTML = htmlDetalles;
+            document.getElementById('resultado-hipo').classList.remove('hidden');
+            feather.replace();
+        }
+
+        function calcularHipernatremia() {
+            const peso = parseFloat(document.getElementById('peso-hiper').value);
+            const naActual = parseFloat(document.getElementById('na-actual-hiper').value);
+            const resultadoDiv = document.getElementById('resultado-hiper-content');
+            const detallesDiv = document.getElementById('detalles-hiper-content');
+
+            if (isNaN(peso) || peso <= 0 || isNaN(naActual) || naActual <= 145) {
+                resultadoDiv.innerHTML = `<p class="text-red-600">Por favor, ingrese un peso válido y un sodio actual mayor a 145 mEq/L.</p>`;
+                detallesDiv.innerHTML = '';
+                document.getElementById('resultado-hiper').classList.remove('hidden');
+                return;
+            }
+
+            const act = 0.6 * peso;
+            const deficitAguaLibre = act * ((naActual / 145) - 1);
+            
+            let tiempoCorreccion = 48; // Default a 48h para seguridad
+            if (naActual < 158) tiempoCorreccion = 24;
+            if (naActual > 170) tiempoCorreccion = 72;
+
+            let nb;
+            if (peso <= 10) { nb = peso * 100; } 
+            else if (peso <= 20) { nb = 1000 + (peso - 10) * 50; } 
+            else { nb = 1500 + (peso - 20) * 20; }
+            
+            const volumenTotal = (deficitAguaLibre * 1000) + (nb * (tiempoCorreccion / 24));
+            const goteo = volumenTotal / tiempoCorreccion;
+
+            const htmlResult = `
+                <h4 class="font-semibold">Plan de Corrección Lenta</h4>
+                <p><strong>Déficit de Agua Libre:</strong> <span class="font-mono">${(deficitAguaLibre * 1000).toFixed(0)} ml</span></p>
+                <p><strong>Tiempo de corrección recomendado:</strong> <span class="font-mono">${tiempoCorreccion} horas</span></p>
+                <p><strong>Volumen total a infundir (Déficit + NB):</strong> <span class="font-mono">${volumenTotal.toFixed(0)} ml</span></p>
+                <p><strong>Goteo sugerido (Sol. Hipotónica):</strong> <span class="font-mono">${goteo.toFixed(1)} ml/h</span></p>
+            `;
+            const htmlDetalles = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Detalles del Cálculo y Riesgos</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        <p><strong>Riesgo Principal:</strong> Una corrección demasiado rápida puede causar <strong>edema cerebral</strong>, con riesgo de convulsiones y daño neurológico. La regla de oro es <strong>NO</strong> disminuir el sodio más de 10-12 mEq/L en 24 horas (o ~0.5 mEq/L/hora).</p>
+                        <p><strong>Cálculo del Déficit de Agua Libre:</strong> Se calcula la cantidad de agua "pura" que le falta al cuerpo para diluir el sodio actual a un nivel normal (145 mEq/L), usando el Agua Corporal Total (ACT = 60% del peso).</p>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">Cálculo: (0.6 * ${peso} kg) * ((${naActual} / 145) - 1) = ${deficitAguaLibre.toFixed(3)} L</p>
+                        <p>El volumen total a infundir suma este déficit a las necesidades basales del paciente para el período de corrección.</p>
+                    </div>
+                </details>
+            `;
+
+            resultadoDiv.innerHTML = htmlResult;
+            detallesDiv.innerHTML = htmlDetalles;
+            document.getElementById('resultado-hiper').classList.remove('hidden');
+            feather.replace();
+        }
+        
+        function actualizarFRTal() {
+            const edad = document.getElementById('tal-edad').value;
+            const frSelect = document.getElementById('tal-fr');
+            frSelect.innerHTML = ''; // Limpiar opciones
+            
+            let opcionesFR;
+            if (edad === 'menor') {
+                opcionesFR = [
+                    { text: '< 40 rpm', value: '0' },
+                    { text: '40-55 rpm', value: '1' },
+                    { text: '56-70 rpm', value: '2' },
+                    { text: '> 70 rpm', value: '3' }
+                ];
+            } else { // mayor o igual a 6 meses
+                opcionesFR = [
+                    { text: '< 30 rpm', value: '0' },
+                    { text: '31-45 rpm', value: '1' },
+                    { text: '46-60 rpm', value: '2' },
+                    { text: '> 60 rpm', value: '3' }
+                ];
+            }
+            
+            opcionesFR.forEach(opcion => {
+                const option = document.createElement('option');
+                option.value = opcion.value;
+                option.textContent = opcion.text;
+                frSelect.appendChild(option);
+            });
+        }
+
+        function calcularScoreTal() {
+            const fr = parseInt(document.getElementById('tal-fr').value);
+            const sibilancias = parseInt(document.getElementById('tal-sibilancias').value);
+            const musculatura = parseInt(document.getElementById('tal-musculatura').value);
+            
+            const total = fr + sibilancias + musculatura;
+            
+            let interpretacion = '';
+            let colorClass = '';
+            let protocolo = '';
+
+            if (total <= 5) {
+                interpretacion = 'Leve (Puntaje ≤ 5)';
+                colorClass = 'text-green-700 bg-green-100';
+                protocolo = `
+                    <h5 class="font-semibold mb-1">Protocolo Sugerido (Leve)</h5>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>Tratamiento:</strong> Salbutamol 2 puffs cada 4-6 horas.</li>
+                        <li><strong>Indicación:</strong> Manejo ambulatorio con pautas de alarma.</li>
+                        <li><strong>Reevaluación:</strong> Control en 24-48 horas.</li>
+                    </ul>`;
+            } else if (total <= 9) {
+                interpretacion = 'Moderado (Puntaje 6-9)';
+                colorClass = 'text-yellow-700 bg-yellow-100';
+                protocolo = `
+                    <h5 class="font-semibold mb-1">Protocolo Sugerido (Moderado)</h5>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>Tratamiento:</strong> 3 series de Salbutamol (2-4 puffs cada 20 min) en la primera hora. Considerar corticoide sistémico (ej. Meprednisona 1-2 mg/kg).</li>
+                        <li><strong>Indicación:</strong> Observación en guardia. Si hay buena respuesta, manejo ambulatorio. Si no mejora, considerar internación.</li>
+                        <li><strong>Oxigenoterapia:</strong> Mantener Saturación de O2 > 94%.</li>
+                    </ul>`;
+            } else {
+                interpretacion = 'Grave (Puntaje ≥ 10)';
+                colorClass = 'text-red-700 bg-red-100';
+                protocolo = `
+                    <h5 class="font-semibold mb-1">Protocolo Sugerido (Grave)</h5>
+                    <ul class="list-disc list-inside space-y-1">
+                        <li><strong>Tratamiento:</strong> Oxigenoterapia para SatO2 > 94%. Salbutamol + Bromuro de Ipratropio en nebulización o puff cada 20 min. Corticoide sistémico EV (ej. Hidrocortisona 5-10 mg/kg).</li>
+                        <li><strong>Indicación:</strong> Internación inmediata. Valorar pasaje a Unidad de Cuidados Intensivos (UTI).</li>
+                        <li><strong>Considerar:</strong> Sulfato de Magnesio EV si no hay respuesta.</li>
+                    </ul>`;
+            }
+
+            const resultadoDiv = document.getElementById('resultado-tal-content');
+            const protocoloDiv = document.getElementById('protocolo-tal-content');
+            
+            resultadoDiv.innerHTML = `
+                <p><strong>Puntaje Total:</strong> <span class="font-mono text-2xl font-bold">${total}</span></p>
+                <p><strong>Interpretación:</strong> <span class="font-semibold px-2 py-1 rounded-full ${colorClass}">${interpretacion}</span></p>
+            `;
+            protocoloDiv.innerHTML = `<div class="mt-4 border-t pt-3 text-sm text-gray-700">${protocolo}</div>`;
+
+            document.getElementById('resultado-tal').classList.remove('hidden');
+        }
+
+        // Inicializar la calculadora de TAL al cargar la página
+        document.addEventListener('DOMContentLoaded', (event) => {
+            actualizarFRTal();
+        });
+
+
+        // --- Lógica de Instalación ---
+        let deferredPrompt;
+        const installButton = document.getElementById('install-button');
+        window.addEventListener('beforeinstallprompt', (e) => {
+            e.preventDefault();
+            deferredPrompt = e;
+            installButton.style.display = 'block';
+            installButton.addEventListener('click', () => {
+                installButton.style.display = 'none';
+                deferredPrompt.prompt();
+                deferredPrompt.userChoice.then((choiceResult) => {
+                    if (choiceResult.outcome === 'accepted') {
+                        console.log('El usuario aceptó instalar la PWA');
+                    }
+                    deferredPrompt = null;
+                });
+            });
+        });
+    </script>
+</body>
+</html>
