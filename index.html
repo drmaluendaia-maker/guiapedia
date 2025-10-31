@@ -97,6 +97,52 @@
         details[open] summary .feather-chevron-down {
             transform: rotate(180deg);
         }
+        /* Estilos para el acordeón de guías */
+        .guide-accordion details {
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .guide-accordion summary {
+            padding: 1rem;
+            font-weight: 600;
+            color: #374151; /* text-gray-700 */
+            background-color: #f9fafb; /* bg-gray-50 */
+            cursor: pointer;
+            transition: background-color 0.2s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .guide-accordion summary:hover {
+            background-color: #f3f4f6; /* bg-gray-100 */
+        }
+        .guide-accordion summary .feather-chevron-down {
+            transition: transform 0.2s;
+        }
+        .guide-accordion details[open] summary .feather-chevron-down {
+            transform: rotate(180deg);
+        }
+        .guide-accordion .guide-content {
+            padding: 1rem;
+            background-color: #ffffff;
+        }
+        .guide-accordion .guide-content h4 {
+            font-weight: 600;
+            color: #4f46e5; /* text-indigo-700 */
+            margin-top: 0.75rem;
+            margin-bottom: 0.25rem;
+        }
+        .guide-accordion .guide-content p {
+            font-size: 0.875rem;
+            color: #4b5563; /* text-gray-600 */
+            margin-bottom: 0.5rem;
+            line-height: 1.6;
+        }
+        .guide-accordion .guide-content ul {
+            list-style-type: disc;
+            padding-left: 1.25rem;
+            font-size: 0.875rem;
+            color: #4b5563;
+        }
     </style>
 </head>
 <body class="antialiased text-gray-800">
@@ -1232,7 +1278,102 @@
             <!-- Página de Normas y Guías -->
             <div id="guides-page" class="page">
                 <button onclick="showPage('main-menu')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
-                <div class="space-y-2"><div class="bg-gray-100 p-3 rounded-lg">Próximamente...</div></div>
+                <div class="card p-0 overflow-hidden guide-accordion">
+                    <!-- Capítulo 1: Guía del Residente -->
+                    <details>
+                        <summary>1. Guía del Residente <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content">
+                            <h4>1.1 Historia Clínica (p. 7)</h4>
+                            <p>Define la estructura correcta de la anamnesis (Antecedentes y Enfermedad Actual), Examen Físico detallado por sistemas (Aspecto general, Piel, Cara, Tórax, etc.) e Indicaciones (Dieta, Hidratación, Medicación, Controles).</p>
+                            <h4>1.2 Pases de UTIP (p. 11)</h4>
+                            <p>Establece la información crucial para un pase de UTIP a SIP: Resumen de internación (motivo, días de ARM, ATB, cultivos), Examen Físico, Planteo diagnóstico e Indicaciones.</p>
+                            <h4>1.3 Evolución Diaria (p. 12)</h4>
+                            <p>Indica el formato de evolución: Días de internación, Diagnósticos, ATB, AVC, Peso. Incluye Impresión Clínica/EF, Aspecto Infectológico (fiebre, cultivos, ATB), Aspecto Nutricional (Antropometría), Balance I/E (con RD) y Conducta (cambios y fundamentos).</p>
+                            <h4>1.4 Epicrisis (p. 14)</h4>
+                            <p>Detalla el proceso de alta: Confección de epicrisis (resumen de internación, estudios, tto, seguimiento), recetas, firma de hoja estadística, entrega a secretaría y explicación detallada al familiar, incluyendo pautas de alarma.</p>
+                            <h4>1.5 Controles de Guardia (p. 15)</h4>
+                            <p>Define la información necesaria para dejar controles a guardia (Datos del paciente, Diagnóstico, Motivo del control, Infecto, Meds, Aportes) y qué se espera del control (CC, CA, Balance, etc.).</p>
+                            <h4>1.6 Tipos de Aislamientos (p. 16-17)</h4>
+                            <p>Describe las precauciones estándar y los tipos de aislamiento (Contacto, Respiratorio/Aéreo, Gotas, Protección) y una tabla de duración del aislamiento según patología (ej. Varicela, TBC, KPC).</p>
+                            <h4>1.7 Números Internos (p. 18)</h4>
+                            <p>Listado de números telefónicos internos del Hospital Notti para comunicación entre servicios.</p>
+                        </div>
+                    </details>
+                    
+                    <!-- Capítulos Futuros (placeholder) -->
+                    <details>
+                        <summary>2. Nutrición <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>3. Laboratorio y Tablas <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>4. Crecimiento y Desarrollo <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>5. Hidratación y Medio Interno <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>6. Urgencias <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>7. Infectología <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>8. Neumonología <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>9. Neurología <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>10. Nefrología <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>11. Endocrinología <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>12. Hematología y Oncología <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>13. Gastroenterología <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>14. Cardiología <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>15. Inmunología <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>16. Cirugía <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>17. Intoxicaciones <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>18. Neonatología <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                    <details>
+                        <summary>19. Misceláneas <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
+                        <div class="guide-content"><p>Próximamente...</p></div>
+                    </details>
+                </div>
             </div>
 
             <!-- Página de Vademécum -->
@@ -2484,4 +2625,5 @@
     </script>
 </body>
 </html>
+
 
