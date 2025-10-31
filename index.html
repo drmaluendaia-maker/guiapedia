@@ -151,6 +151,8 @@
                      <button onclick="showPage('php-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Plan de Hidratación Parenteral (PHP)</button>
                      <button onclick="showPage('disnatremias-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Corrección de Disnatremias</button>
                      <button onclick="showPage('scores-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Scores Clínicos</button>
+                     <button onclick="showPage('acidobase-cad-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Estado Ácido-Base (EAB)</button>
+                     <button onclick="showPage('cad-treatment-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Tratamiento Cetoacidosis (CAD)</button>
                 </div>
             </div>
             
@@ -159,6 +161,67 @@
                  <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
                 <div class="card p-6">
                     <h2 class="text-xl font-semibold mb-4 border-b pb-2">Plan de Hidratación Parenteral (PHP)</h2>
+                    
+                    <!-- INICIO: Guía de Deshidratación Agregada -->
+                    <details class="mb-4 bg-gray-50 p-3 rounded-lg border">
+                        <summary class="font-medium text-gray-700 flex justify-between items-center cursor-pointer">
+                            <span>Guía de Estimación Clínica de Deshidratación</span>
+                            <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                        </summary>
+                        <div class="mt-3 overflow-x-auto">
+                            <table class="w-full min-w-max text-left text-sm border-collapse">
+                                <thead class="bg-gray-100">
+                                    <tr class="border-b">
+                                        <th class="p-2 border">Signo Clínico</th>
+                                        <th class="p-2 border text-center">Leve (3-5%)</th>
+                                        <th class="p-2 border text-center">Moderada (6-9%)</th>
+                                        <th class="p-2 border text-center">Grave (≥10%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="divide-y">
+                                    <tr class="divide-x">
+                                        <td class="p-2 border">Sensorio</td>
+                                        <td class="p-2 border">Alerta, irritable</td>
+                                        <td class="p-2 border">Letárgico, irritable</td>
+                                        <td class="p-2 border">Letárgico, comatoso</td>
+                                    </tr>
+                                    <tr class="divide-x">
+                                        <td class="p-2 border">Mucosas</td>
+                                        <td class="p-2 border">Ligeramente secas</td>
+                                        <td class="p-2 border">Secas</td>
+                                        <td class="p-2 border">Muy secas, agrietadas</td>
+                                    </tr>
+                                    <tr class="divide-x">
+                                        <td class="p-2 border">Ojos</td>
+                                        <td class="p-2 border">Normales</td>
+                                        <td class="p-2 border">Hundidos</td>
+                                        <td class="p-2 border">Muy hundidos, sin lágrimas</td>
+                                    </tr>
+                                    <tr class="divide-x">
+                                        <td class="p-2 border">Pliegue cutáneo</td>
+                                        <td class="p-2 border">Elástico</td>
+                                        <td class="p-2 border">Disminuido (lento)</td>
+                                        <td class="p-2 border">Muy disminuido (>2s)</td>
+                                    </tr>
+                                    <tr class="divide-x">
+                                        <td class="p-2 border">Relleno capilar</td>
+                                        <td class="p-2 border">&lt; 2 seg</td>
+                                        <td class="p-2 border">2-3 seg</td>
+                                        <td class="p-2 border">&gt; 3 seg</td>
+                                    </tr>
+                                    <tr class="divide-x">
+                                        <td class="p-2 border">Sed</td>
+                                        <td class="p-2 border">Bebe normal, sed</td>
+                                        <td class="p-2 border">Bebe con avidez</td>
+                                        <td class="p-2 border">No puede beber</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                            <p class="text-xs text-gray-500 mt-2">*Esta es una guía general. La evaluación clínica es soberana.</p>
+                        </div>
+                    </details>
+                    <!-- FIN: Guía de Deshidratación Agregada -->
+
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
                         <div>
                             <label for="peso-php" class="block text-sm font-medium text-gray-700">Peso del paciente (kg)</label>
@@ -295,6 +358,257 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Página de la Calculadora de Ácido-Base y CAD -->
+            <div id="acidobase-cad-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <h2 class="text-2xl font-semibold mb-4">Calculadoras: Ácido-Base y CAD</h2>
+                
+                <div class="space-y-6">
+
+                    <!-- Calculadora de Anion Gap -->
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 border-b pb-2">Brecha Aniónica (Anion Gap)</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                            <div>
+                                <label for="ag-na" class="block text-sm font-medium text-gray-700">Sodio (mEq/L)</label>
+                                <input type="number" id="ag-na" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 140">
+                            </div>
+                            <div>
+                                <label for="ag-cl" class="block text-sm font-medium text-gray-700">Cloro (mEq/L)</label>
+                                <input type="number" id="ag-cl" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 105">
+                            </div>
+                            <div>
+                                <label for="ag-hco3" class="block text-sm font-medium text-gray-700">Bicarbonato (mEq/L)</label>
+                                <input type="number" id="ag-hco3" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 24">
+                            </div>
+                        </div>
+                        <div class="mt-6"><button onclick="calcularAnionGap()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Anion Gap</button></div>
+                        <div id="resultado-ag" class="mt-6 hidden">
+                            <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                            <div class="result-card p-4 rounded-lg space-y-3">
+                                <p><strong>Anion Gap:</strong> <span id="ag-result" class="font-mono text-xl"></span> mEq/L</p>
+                                <p><strong>Interpretación:</strong> <span id="ag-interpretacion" class="font-semibold"></span></p>
+                            </div>
+                            <div id="detalles-ag-content" class="mt-4"></div>
+                        </div>
+                    </div>
+
+                    <!-- Calculadora de Sodio Corregido -->
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 border-b pb-2">Sodio Corregido por Glucemia</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="na-corregido-na" class="block text-sm font-medium text-gray-700">Sodio medido (mEq/L)</label>
+                                <input type="number" id="na-corregido-na" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 130">
+                            </div>
+                            <div>
+                                <label for="na-corregido-glucemia" class="block text-sm font-medium text-gray-700">Glucemia (mg/dL)</label>
+                                <input type="number" id="na-corregido-glucemia" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 600">
+                            </div>
+                        </div>
+                        <div class="mt-6"><button onclick="calcularNaCorregido()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Sodio Corregido</button></div>
+                        <div id="resultado-na-corregido" class="mt-6 hidden">
+                            <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                            <div class="result-card p-4 rounded-lg space-y-3">
+                                <p><strong>Sodio Corregido:</strong> <span id="na-corregido-result" class="font-mono text-xl"></span> mEq/L</p>
+                            </div>
+                            <div id="detalles-na-corregido-content" class="mt-4"></div>
+                        </div>
+                    </div>
+
+                    <!-- Calculadora de Osmolaridad Efectiva -->
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 border-b pb-2">Osmolaridad Plasmática Efectiva</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="osm-na" class="block text-sm font-medium text-gray-700">Sodio (mEq/L)</label>
+                                <input type="number" id="osm-na" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 140">
+                            </div>
+                            <div>
+                                <label for="osm-glucemia" class="block text-sm font-medium text-gray-700">Glucemia (mg/dL)</label>
+                                <input type="number" id="osm-glucemia" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 100">
+                            </div>
+                        </div>
+                        <div class="mt-6"><button onclick="calcularOsmolaridad()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Osmolaridad</button></div>
+                        <div id="resultado-osm" class="mt-6 hidden">
+                            <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                            <div class="result-card p-4 rounded-lg space-y-3">
+                                <p><strong>Osmolaridad Efectiva:</strong> <span id="osm-result" class="font-mono text-xl"></span> mOsm/kg</p>
+                                <p><strong>Interpretación:</strong> <span id="osm-interpretacion" class="font-semibold"></span></p>
+                            </div>
+                            <div id="detalles-osm-content" class="mt-4"></div>
+                        </div>
+                    </div>
+
+                    <!-- Calculadora de pCO2 Esperada -->
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 border-b pb-2">Compensación de Acidosis Metabólica (pCO2 esperada)</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="pco2-hco3" class="block text-sm font-medium text-gray-700">HCO3 real (mEq/L)</label>
+                                <input type="number" id="pco2-hco3" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 15">
+                            </div>
+                            <div>
+                                <label for="pco2-medida" class="block text-sm font-medium text-gray-700">pCO2 medida (mmHg)</label>
+                                <input type="number" id="pco2-medida" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 30">
+                            </div>
+                        </div>
+                        <div class="mt-6"><button onclick="calcularpCO2Esperada()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular pCO2 Esperada</button></div>
+                        <div id="resultado-pco2" class="mt-6 hidden">
+                            <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                            <div class="result-card p-4 rounded-lg space-y-3">
+                                <p><strong>pCO2 Esperada:</strong> <span id="pco2-result" class="font-mono text-xl"></span> mmHg</p>
+                                <p><strong>Interpretación:</strong> <span id="pco2-interpretacion" class="font-semibold"></span></p>
+                            </div>
+                            <div id="detalles-pco2-content" class="mt-4"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Calculadora de Déficit de Base inducido por Cloro -->
+                    <div class="card p-6">
+                        <h3 class="text-xl font-semibold mb-4 border-b pb-2">Déficit de Base inducido por Cloro</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="db-cloro-na" class="block text-sm font-medium text-gray-700">Sodio (mEq/L)</label>
+                                <input type="number" id="db-cloro-na" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 140">
+                            </div>
+                            <div>
+                                <label for="db-cloro-cl" class="block text-sm font-medium text-gray-700">Cloro (mEq/L)</label>
+                                <input type="number" id="db-cloro-cl" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 115">
+                            </div>
+                        </div>
+                        <div class="mt-6"><button onclick="calcularDBCloro()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular DB por Cloro</button></div>
+                        <div id="resultado-db-cloro" class="mt-6 hidden">
+                            <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                            <div class="result-card p-4 rounded-lg space-y-3">
+                                <p><strong>Diferencia Na-Cl:</strong> <span id="db-cloro-dif" class="font-mono text-xl"></span> mEq/L</p>
+                                <p><strong>DB inducido por Cloro:</strong> <span id="db-cloro-result" class="font-mono text-xl"></span> mEq/L</p>
+                                <p><strong>Interpretación:</strong> <span id="db-cloro-interpretacion" class="font-semibold"></span></p>
+                            </div>
+                            <div id="detalles-db-cloro-content" class="mt-4"></div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- Página de Calculadora de Tratamiento de CAD -->
+            <div id="cad-treatment-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Calculadora de Tratamiento de CAD</h2>
+                    
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="cad-peso" class="block text-sm font-medium text-gray-700">Peso (kg) <span class="text-red-500">*</span></label>
+                                <input type="number" id="cad-peso" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 15">
+                            </div>
+                            <div>
+                                <label for="cad-ph" class="block text-sm font-medium text-gray-700">pH venoso <span class="text-red-500">*</span></label>
+                                <input type="number" id="cad-ph" step="0.01" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 7.15">
+                            </div>
+                            <div>
+                                <label for="cad-k" class="block text-sm font-medium text-gray-700">Potasio (mEq/L) <span class="text-red-500">*</span></label>
+                                <input type="number" id="cad-k" step="0.1" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 4.0">
+                            </div>
+                            <div>
+                                <label for="cad-glucemia" class="block text-sm font-medium text-gray-700">Glucemia (mg/dL) <span class="text-red-500">*</span></label>
+                                <input type="number" id="cad-glucemia" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 450">
+                            </div>
+                        </div>
+
+                        <div class="border-t pt-4">
+                            <span class="block text-sm font-medium text-gray-700">Plan de Reposición (Tabla Darrow):</span>
+                            <div class="mt-2 flex gap-4">
+                                <label class="flex items-center">
+                                    <input type="radio" name="repo-tiempo" id="repo-48h" value="48" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500" checked>
+                                    <span class="ml-2 text-sm text-gray-600">48 horas (Recomendado < 5 años / CAD Grave)</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="radio" name="repo-tiempo" id="repo-24h" value="24" class="h-4 w-4 text-indigo-600 focus:ring-indigo-500">
+                                    <span class="ml-2 text-sm text-gray-600">24 horas</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6"><button onclick="calcularCAD()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Generar Propuesta de Tratamiento</button></div>
+                    
+                    <div id="resultado-cad" class="mt-6 hidden space-y-4">
+                        <div id="cad-error" class="hidden p-4 rounded-md bg-red-50 text-red-700"></div>
+                        
+                        <div id="cad-plan" class="hidden space-y-4">
+                            <!-- Clasificación -->
+                            <div class="result-card p-4 rounded-lg">
+                                <h3 class="font-semibold text-lg mb-2">Clasificación</h3>
+                                <p><strong>Severidad:</strong> <span id="cad-severidad" class="font-semibold"></span></p>
+                            </div>
+
+                            <!-- Fase 1 -->
+                            <div class="result-card p-4 rounded-lg">
+                                <h3 class="font-semibold text-lg mb-2">Fase 1: Expansión Inicial (Sin Shock)</h3>
+                                <p><strong>Fluido:</strong> Solución Fisiológica 0.9%</p>
+                                <p><strong>Volumen:</strong> <span id="cad-fase1-volumen" class="font-mono"></span> ml (10-20 ml/kg)</p>
+                                <p><strong>Perfusión:</strong> A pasar en 1 a 2 horas.</p>
+                                <p class="text-sm text-indigo-700 mt-2"><strong>Nota:</strong> Si hay shock, administrar 20 ml/kg en bolo rápido y repetir según sea necesario.</p>
+                            </div>
+
+                            <!-- Fase 2 -->
+                            <div class="result-card p-4 rounded-lg">
+                                <h3 class="font-semibold text-lg mb-2">Fase 2: Hidratación (Tabla Darrow)</h3>
+                                <p><strong>Volumen Total (NB + Déficit) para 24h:</strong> <span id="cad-fase2-volumen" class="font-mono text-xl"></span> ml</p>
+                                <p><strong>Goteo:</strong> <span id="cad-fase2-goteo" class="font-mono text-xl"></span> ml/h</p>
+                                <p class="text-sm text-indigo-700 mt-2">Volumen calculado según Tabla Darrow para reposición en <span id="cad-fase2-horas"></span> horas.</p>
+                            </div>
+
+                            <!-- Fase 3 -->
+                            <div class="result-card p-4 rounded-lg">
+                                <h3 class="font-semibold text-lg mb-2">Fase 3: Composición de la Solución</h3>
+                                <p><strong>Fluido Base (para 500ml):</strong> <span id="cad-fase3-fluido" class="font-mono font-bold"></span></p>
+                                <p class="text-sm text-indigo-700">(Continuar con SF 0.9% si Glucemia > 300 mg/dL y no descendió > 90 mg/dL post-expansión. Pasar a Dextrosa 5% si Glucemia ≤ 300 mg/dL)</p>
+                                <hr class="my-3 border-indigo-200">
+                                <h4 class="font-semibold">Añadir al sachet de 500ml:</h4>
+                                <p><strong>NaCl 20%:</strong> <span id="cad-fase3-na" class="font-mono"></span> ml (para 140 mEq/L)</p>
+                                <p><strong>Fosfato de K 3M:</strong> <span id="cad-fase3-fosfato" class="font-mono"></span> ml</p>
+                                <p><strong>KCl 1M:</strong> <span id="cad-fase3-kcl" class="font-mono"></span> ml</p>
+                                <p><strong>Total de Potasio Aportado:</strong> <span id="cad-fase3-k-total" class="font-mono"></span> mEq/L</p>
+                                <div id="cad-fase3-k-warning" class="text-sm text-red-600 mt-2"></div>
+                            </div>
+
+                            <!-- Fase 4 -->
+                            <div class="result-card p-4 rounded-lg">
+                                <h3 class="font-semibold text-lg mb-2">Fase 4: Insulinoterapia (EV Continua)</h3>
+                                <p class="text-sm text-indigo-700">Iniciar 1-2 horas después de la hidratación.</p>
+                                <p><strong>Dosis:</strong> <span id="cad-fase4-dosis" class="font-mono text-xl"></span> U/hora (a <span id="cad-fase4-dosis-kg"></span> U/kg/h)</p>
+                                <p><strong>Preparación Sugerida:</strong> 50 U de Insulina Rápida en 500 ml de SF (0.1 U/ml).</p>
+                                <p><strong>Infusión (para prep. 0.1 U/ml):</strong> <span id="cad-fase4-goteo" class="font-mono text-xl"></span> ml/h</p>
+                            </div>
+                            
+                            <!-- Fase 5 -->
+                            <div class="result-card p-4 rounded-lg">
+                                <h3 class="font-semibold text-lg mb-2">Fase 5: Insulina Basal</h3>
+                                <p>Considerar iniciar Insulina Glargina a las 6h de tratamiento.</p>
+                                <p><strong>Dosis Sugerida:</strong> <span id="cad-fase5-basal" class="font-mono text-xl"></span> U/día SC</p>
+                            </div>
+
+                            <!-- Monitoreo -->
+                            <div class="card p-6 border-l-4 border-yellow-500 bg-yellow-50">
+                                <h3 class="font-semibold text-lg mb-2 text-yellow-800">Monitoreo y Alertas</h3>
+                                <ul class="list-disc list-inside text-sm space-y-1">
+                                    <li><strong>Signos vitales y Glasgow:</strong> control horario.</li>
+                                    <li><strong>Glucemia capilar:</strong> control horario.</li>
+                                    <li><strong>Cetonemia capilar:</strong> control cada 2 horas.</li>
+                                    <li><strong>Laboratorio (EAB, Ionograma):</strong> a las 2, 6, 12 y 24 horas.</li>
+                                    <li><strong>¡Vigilar signos de Edema Cerebral!</strong> (Cefalea, bradicardia, vómitos, cambios en sensorio, HTA).</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
 
             <!-- Página de Normas y Guías -->
             <div id="guides-page" class="page">
@@ -450,8 +764,8 @@
                     </summary>
                     <div class="mt-2 text-sm text-gray-600 space-y-3">
                         <div>
-                            <h5 class="font-semibold mb-1">1. Estimación del Grado de Deshidratación</h5>
-                            <p>El % de deshidratación se estima clínicamente. Un ${deshidratacion}% corresponde a una deshidratación <strong>${deshidratacion < 5 ? 'Leve' : (deshidratacion <= 10 ? 'Moderada' : 'Grave')}</strong>. Busque signos como sequedad de mucosas, pliegue cutáneo, ojos hundidos y relleno capilar enlentecido.</p>
+                            <h5 class="font-semibold mb-1">1. Interpretación del Grado de Deshidratación</h5>
+                            <p>El % de deshidratación (${deshidratacion}%) corresponde a una deshidratación <strong>${deshidratacion < 5 ? 'Leve' : (deshidratacion <= 9 ? 'Moderada' : 'Grave')}</strong>. Este valor se basa en la guía clínica (ver arriba).</p>
                         </div>
                         <div>
                             <h5 class="font-semibold mb-1">2. Desglose del Cálculo del Volumen</h5>
@@ -473,6 +787,223 @@
             document.getElementById('resultado-php').classList.remove('hidden');
             feather.replace();
         }
+
+        function calcularAnionGap() {
+            const na = parseFloat(document.getElementById('ag-na').value);
+            const cl = parseFloat(document.getElementById('ag-cl').value);
+            const hco3 = parseFloat(document.getElementById('ag-hco3').value);
+            const resultadoDiv = document.getElementById('resultado-ag');
+            const detallesDiv = document.getElementById('detalles-ag-content');
+
+            if (isNaN(na) || isNaN(cl) || isNaN(hco3)) {
+                resultadoDiv.classList.add('hidden');
+                return;
+            }
+
+            const ag = na - (cl + hco3);
+            let interpretacion = '';
+
+            if (ag > 14) {
+                interpretacion = 'Elevado (Acidosis metabólica normoclorémica)';
+            } else if (ag < 10) {
+                interpretacion = 'Bajo (raro, considerar hipoalbuminemia)';
+            } else {
+                interpretacion = 'Normal (Acidosis metabólica hiperclorémica)';
+            }
+
+            document.getElementById('ag-result').textContent = ag.toFixed(2);
+            document.getElementById('ag-interpretacion').textContent = interpretacion;
+
+            const htmlDetalles = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Detalles del Cálculo</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        <p>El Anion Gap (Brecha Aniónica) ayuda a diferenciar las causas de acidosis metabólica.</p>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">Fórmula: Na - (Cl + HCO3)</p>
+                        <p><strong>Valor Normal:</strong> 12 ± 2 mEq/L (según PDF Notti, p. 76).</p>
+                        <p><strong>AG Elevado:</strong> Sugiere ganancia de ácidos (Ej. Cetoacidosis, Acidosis láctica, Intoxicaciones).</p>
+                        <p><strong>AG Normal:</strong> Sugiere pérdida de bicarbonato (Ej. Diarrea, Acidosis tubular renal).</p>
+                    </div>
+                </details>
+            `;
+            detallesDiv.innerHTML = htmlDetalles;
+            resultadoDiv.classList.remove('hidden');
+            feather.replace();
+        }
+
+        // --- Lógica de la nueva Calculadora CAD ---
+
+        // Tablas de Darrow (p. 398)
+        const darrow48Map = {
+            4: 530, 5: 650, 6: 790, 7: 920, 8: 1040, 9: 1160, 10: 1280, 11: 1390, 12: 1490, 
+            13: 1590, 14: 1690, 15: 1780, 16: 1870, 17: 1970, 18: 2050, 19: 2140, 20: 2230,
+            22: 2400, 24: 2560, 26: 2730, 28: 2890, 30: 3060, 32: 3220, 34: 3360, 36: 3460,
+            38: 3580, 40: 3700, 45: 3960, 50: 4200, 55: 4420, 60: 4640, 65: 4820, 70: 5000,
+            75: 5180, 80: 5380
+        };
+
+        const darrow24Map = {
+            4: 735, 5: 895, 6: 1095, 7: 1270, 8: 1440, 9: 1610, 10: 1780, 11: 1940, 12: 2090,
+            13: 2240, 14: 2390, 15: 2530, 16: 2670, 17: 2820, 18: 2950, 19: 3090, 20: 3230,
+            22: 3500, 24: 3760, 26: 4030, 28: 4290, 30: 4560, 32: 4820, 34: 5040, 36: 5190,
+            38: 5370, 40: 5550, 45: 5940, 50: 6300, 55: 6630, 60: 6960, 65: 7230, 70: 7500,
+            75: 7770, 80: 8070
+        };
+
+        function getDarrowVolume(peso, table) {
+            const keys = Object.keys(table).map(Number).sort((a, b) => a - b);
+            if (peso <= keys[0]) return table[keys[0]];
+            if (peso >= keys[keys.length - 1]) return table[keys[keys.length - 1]];
+
+            let x1, y1, x2, y2;
+            for (let i = 0; i < keys.length - 1; i++) {
+                if (peso >= keys[i] && peso <= keys[i+1]) {
+                    x1 = keys[i];
+                    y1 = table[x1];
+                    x2 = keys[i+1];
+                    y2 = table[x2];
+                    break;
+                }
+            }
+            // Interpolación lineal
+            return (peso - x1) * (y2 - y1) / (x2 - x1) + y1;
+        }
+
+        function calcularCAD() {
+            const peso = parseFloat(document.getElementById('cad-peso').value);
+            const ph = parseFloat(document.getElementById('cad-ph').value);
+            const k_level = parseFloat(document.getElementById('cad-k').value);
+            const glucemia = parseFloat(document.getElementById('cad-glucemia').value);
+            const repo_hours = parseInt(document.querySelector('input[name="repo-tiempo"]:checked').value);
+
+            const resultadoDiv = document.getElementById('resultado-cad');
+            const errorDiv = document.getElementById('cad-error');
+            const planDiv = document.getElementById('cad-plan');
+            
+            errorDiv.classList.add('hidden');
+            planDiv.classList.add('hidden');
+            resultadoDiv.classList.add('hidden');
+
+            if (isNaN(peso) || isNaN(ph) || isNaN(k_level) || isNaN(glucemia)) {
+                errorDiv.textContent = 'Por favor, complete todos los campos obligatorios (*).';
+                errorDiv.classList.remove('hidden');
+                resultadoDiv.classList.remove('hidden');
+                return;
+            }
+
+            if (k_level < 2.6) {
+                errorDiv.innerHTML = '<strong>¡ALERTA HIPOKALEMIA SEVERA!</strong> (K+ < 2.6 mEq/L). Corrija el potasio ANTES de iniciar la insulinoterapia. Ver guía (p. 400).';
+                errorDiv.classList.remove('hidden');
+                resultadoDiv.classList.remove('hidden');
+                return;
+            }
+
+            // --- 1. Clasificación ---
+            let severidad = '';
+            let isSevere = false;
+            if (ph < 7.1) {
+                severidad = 'Grave';
+                isSevere = true;
+            } else if (ph < 7.2) {
+                severidad = 'Moderada';
+            } else if (ph < 7.3) {
+                severidad = 'Leve';
+            } else {
+                severidad = 'No cumple criterio de pH para CAD (pH ≥ 7.3)';
+            }
+            document.getElementById('cad-severidad').textContent = severidad;
+
+            // --- 2. Fase 1: Expansión ---
+            const expansion_min = 10 * peso;
+            const expansion_max = 20 * peso;
+            document.getElementById('cad-fase1-volumen').textContent = `${expansion_min.toFixed(0)} - ${expansion_max.toFixed(0)}`;
+
+            // --- 3. Fase 2: Darrow ---
+            const darrowTable = (repo_hours === 48) ? darrow48Map : darrow24Map;
+            const totalVolume = getDarrowVolume(peso, darrowTable);
+            const goteo_ml_h = totalVolume / 24;
+            document.getElementById('cad-fase2-volumen').textContent = totalVolume.toFixed(0);
+            document.getElementById('cad-fase2-goteo').textContent = goteo_ml_h.toFixed(1);
+            document.getElementById('cad-fase2-horas').textContent = repo_hours;
+
+            // --- 4. Fase 3: Composición ---
+            // Fluido base: p. 399
+            let fluidoBase = "SF 0.9%";
+            if (glucemia <= 300) { 
+                fluidoBase = "Dextrosa 5%";
+            }
+            document.getElementById('cad-fase3-fluido').textContent = fluidoBase;
+            
+            // Sodio: p. 399
+            document.getElementById('cad-fase3-na').textContent = "20"; // 140 mEq/L
+
+            // Potasio y Fosfato: p. 400-401
+            let k_total_mEq_L = 40;
+            let fosfato_k_ml = 0;
+            let clk_1m_ml = 0;
+            let k_warning = '';
+
+            if (k_level > 5.0) k_total_mEq_L = 30;
+            if (k_level < 3.5) k_warning = 'Hipokalemia (2.6-3.4): Considerar 20 mEq/L de K+ en la expansión inicial (p. 400).';
+
+            const isKNormal = k_level >= 3.5 && k_level <= 5.0;
+
+            if (isSevere && isKNormal) {
+                // Usar receta con Fosfato (p. 401, Tabla A)
+                k_total_mEq_L = 40; // La receta ya apunta a 40 mEq/L
+                if (peso < 15) {
+                    fosfato_k_ml = 1.75;
+                    clk_1m_ml = 12;
+                } else if (peso <= 25) {
+                    fosfato_k_ml = 2.0;
+                    clk_1m_ml = 12;
+                } else {
+                    fosfato_k_ml = 2.3;
+                    clk_1m_ml = 10;
+                }
+            } else {
+                // Usar receta estándar solo con ClK 1M
+                // (k_total_mEq_L / 1000) * 500 = mEq totales en 500ml. Como ClK 1M es 1 mEq/ml:
+                clk_1m_ml = (k_total_mEq_L * 500) / 1000;
+            }
+
+            document.getElementById('cad-fase3-fosfato').textContent = fosfato_k_ml.toFixed(2);
+            document.getElementById('cad-fase3-kcl').textContent = clk_1m_ml.toFixed(1);
+            document.getElementById('cad-fase3-k-total').textContent = k_total_mEq_L;
+            document.getElementById('cad-fase3-k-warning').textContent = k_warning;
+
+
+            // --- 5. Fase 4: Insulina EV ---
+            let insulin_rate_kg = (isSevere && peso >= 5) ? 0.1 : 0.05;
+            const insulin_U_hr = insulin_rate_kg * peso;
+            const insulin_ml_hr = insulin_U_hr / 0.1; // Asumiendo prep. 0.1 U/ml
+            
+            document.getElementById('cad-fase4-dosis-kg').textContent = insulin_rate_kg;
+            document.getElementById('cad-fase4-dosis').textContent = insulin_U_hr.toFixed(2);
+            document.getElementById('cad-fase4-goteo').textContent = insulin_ml_hr.toFixed(1);
+
+            // --- 6. Fase 5: Insulina Basal (p. 405) ---
+            let basal_dose = 0;
+            if (peso < (2 * 3.3 * 2)) { // Aprox < 2 años
+                basal_dose = 0.2 * peso;
+            } else if (peso < (5 * 3.3 * 2)) { // Aprox 2-5 años
+                basal_dose = 0.3 * peso;
+            } else if (peso < (12 * 3.3 * 2)) { // Aprox 5-12 años
+                basal_dose = 0.4 * peso;
+            } else { // > 12 años
+                basal_dose = 0.5 * peso;
+            }
+            document.getElementById('cad-fase5-basal').textContent = basal_dose.toFixed(1);
+
+
+            planDiv.classList.remove('hidden');
+            resultadoDiv.classList.remove('hidden');
+            feather.replace();
+        }
+
 
         function openTab(evt, tabName) {
             document.querySelectorAll('.tab-content').forEach(tc => tc.style.display = "none");
@@ -729,7 +1260,5 @@
     </script>
 </body>
 </html>
-
-
 
 
