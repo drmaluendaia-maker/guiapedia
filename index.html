@@ -1280,58 +1280,43 @@
                 <button onclick="showPage('main-menu')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
                 <div class="card p-0 overflow-hidden guide-accordion">
                     <!-- Capítulo 1: Guía del Residente -->
-                    <details>
+                    <details open>
                         <summary>1. Guía del Residente <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
                         <div class="guide-content">
                             <h4>1.1 Historia Clínica (p. 7)</h4>
-                            <p>Define la estructura correcta de la anamnesis (Antecedentes y Enfermedad Actual), Examen Físico detallado por sistemas (Aspecto general, Piel, Cara, Tórax, etc.) e Indicaciones (Dieta, Hidratación, Medicación, Controles).</p>
+                            <p>La HC debe ser estructurada. <strong>Anamnesis:</strong> Detallar antecedentes relevantes (perinatales, patológicos, internaciones previas) y una Enfermedad Actual ordenada cronológicamente, evitando abreviaciones. <strong>Examen Físico:</strong> Cefalocaudal completo, comenzando por el Aspecto General. <strong>Indicaciones:</strong> Deben seguir un orden: 1. Dieta, 2. Hidratación (VNC), 3. Medicaciones (mg/kg/día y horarios), 4. Controles (CSV, Balance I/E, O2, etc.).</p>
                             <h4>1.2 Pases de UTIP (p. 11)</h4>
-                            <p>Establece la información crucial para un pase de UTIP a SIP: Resumen de internación (motivo, días de ARM, ATB, cultivos), Examen Físico, Planteo diagnóstico e Indicaciones.</p>
+                            <p>Debe ser un resumen conciso de la internación en UTI. Incluir: Motivo de internación, días en UTI, días de ARM, inotrópicos, transfusiones, esquema ATB y estado de cultivos. Finalizar con Examen Físico, Planteo diagnóstico e Indicaciones actuales.</p>
                             <h4>1.3 Evolución Diaria (p. 12)</h4>
-                            <p>Indica el formato de evolución: Días de internación, Diagnósticos, ATB, AVC, Peso. Incluye Impresión Clínica/EF, Aspecto Infectológico (fiebre, cultivos, ATB), Aspecto Nutricional (Antropometría), Balance I/E (con RD) y Conducta (cambios y fundamentos).</p>
+                            <p>Formato sugerido: 1. Diagnósticos (ordenados por relevancia). 2. Impresión Clínica y EF (novedades, estado general). 3. Aspecto Infectológico (días afebril, ATB, cultivos pendientes/positivos). 4. Aspecto Nutricional (Antropometría, Z-score). 5. Balance I/E (cálculo de Ritmo Diurético). 6. Conducta (fundamentar cambios y nuevos estudios).</p>
                             <h4>1.4 Epicrisis (p. 14)</h4>
-                            <p>Detalla el proceso de alta: Confección de epicrisis (resumen de internación, estudios, tto, seguimiento), recetas, firma de hoja estadística, entrega a secretaría y explicación detallada al familiar, incluyendo pautas de alarma.</p>
+                            <p>Es el resumen claro de la internación (motivo, estudios, tto, seguimiento). Se debe confeccionar por duplicado (paciente y carpeta). Entregar recetas y explicar detalladamente el tratamiento y las pautas de alarma. El alta administrativa se tramita en Aranceles (o Guardia en fines de semana) con DNI del paciente y familiar.</p>
                             <h4>1.5 Controles de Guardia (p. 15)</h4>
-                            <p>Define la información necesaria para dejar controles a guardia (Datos del paciente, Diagnóstico, Motivo del control, Infecto, Meds, Aportes) y qué se espera del control (CC, CA, Balance, etc.).</p>
+                            <p>Al *dejar* un control a guardia, ser claro en el motivo (CC, CA, Balance) y qué conducta se espera. Al *levantar* controles, recabar: N° de cama, Dg, días de internación, motivo del control, ATB, aportes (VNC/VO) y estudios pendientes.</p>
                             <h4>1.6 Tipos de Aislamientos (p. 16-17)</h4>
-                            <p>Describe las precauciones estándar y los tipos de aislamiento (Contacto, Respiratorio/Aéreo, Gotas, Protección) y una tabla de duración del aislamiento según patología (ej. Varicela, TBC, KPC).</p>
+                            <p>Define precauciones para 4 tipos: <strong>Contacto</strong> (guantes, camisolín si riesgo), <strong>Aéreo</strong> (barbijo alta eficacia, hab. individual), <strong>Gotas</strong> (barbijo, hab. individual), <strong>Protección</strong> (ídem contacto). Incluye tabla de duración de aislamiento por patología (ej: TBC hasta baciloscopía negativa, Varicela hasta costras, KPC toda la internación).</p>
                             <h4>1.7 Números Internos (p. 18)</h4>
                             <p>Listado de números telefónicos internos del Hospital Notti para comunicación entre servicios.</p>
-                        </div>
-                    </details>
-                    
-                    <!-- Capítulo 2: Nutrición -->
-                    <details>
-                        <summary>2. Nutrición <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
-                        <div class="guide-content">
-                            <h4>2.1 Dietas hospitalarias (p. 19)</h4>
-                            <p>Tabla de tipificación de menús hospitalarios, detallando componentes (desayuno, almuerzo, cena, colaciones) para dietas: Líquida, Operado A, Operado B, Astringente y General.</p>
-                            <h4>2.2 Leches (p. 19-22)</h4>
-                            <p>Pautas de alimentación y reconstitución de leches. Destaca:</p>
-                            <ul>
-                                <li>Capacidad gástrica: 10-20 ml (RN) a 300 ml (1 año).</li>
-                                <li>Reconstitución: 15% (< 1 año), 10% (> 1 año), 17% (Prematuro).</li>
-                                <li>Pautas madurativas (0-24m) para la introducción de líquidos, semisólidos y sólidos.</li>
-                                <li>Algoritmos para reconstitución de leche entera en < 6 meses y > 6 meses, detallando el agregado de azúcar y aceite según la disponibilidad de fórmula o lactancia materna.</li>
-                            </ul>
-                            <h4>2.3 Desnutrición (p. 23-27)</h4>
-                            <p>Define la desnutrición y la clasifica por:</p>
-                            <ul>
-                                <li><strong>Etiología:</strong> Primaria (ingesta insuficiente), Secundaria (no utilización del alimento), Mixta.</li>
-                                <li><strong>Clínica:</strong> Kwashiorkor (déficit proteico, edematosa, aguda) y Marasmática (déficit calórico, emaciación, crónica).</li>
-                                <li><strong>Waterlow (Grado y Tiempo):</strong> Utiliza P/T y T/E para clasificar en Normal, Aguda (P/T bajo), Crónica Recuperada (T/E baja) y Crónica Agudizada (P/T y T/E bajos).</li>
-                                <li>Incluye tabla de Cribado Nutricional (p. 27) para detectar riesgo (Alto, Medio, Bajo) al ingreso.</li>
-                            </ul>
-                            <h4>2.4 Síndrome Metabólico (p. 27-30)</h4>
-                            <p><strong>Síndrome Metabólico:</strong> Define controles en paciente obeso (Glucemia, perfil lipídico, ecografía) y Criterios Diagnósticos (Cook et al.): 3 de 5 (CC ≥p90, Glucemia ayunas ≥110, TG ≥110, HDL <40, TA ≥p90). Incluye valores de insulinemia por estadio puberal.</p>
-                            <p><strong>Síndrome de Realimentación (p. 28):</strong> Define el riesgo de la reintroducción brusca de alimentación en pacientes desnutridos (cambio de catabolismo a anabolismo). La fisiopatología incluye hiperglucemia, aumento de insulina y alteraciones electrolíticas (Hipofosfatemia, Hipopotasemia, Hipomagnesemia) que llevan a debilidad y fallo orgánico. Detalla situaciones de riesgo (Anorexia, pérdida de peso >10%, Kwashiorkor/Marasmo).</p>
                         </div>
                     </details>
                     
                     <!-- Capítulos Futuros (placeholder) -->
                     <details>
                         <summary>3. Laboratorio y Tablas <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
-                        <div class="guide-content"><p>Próximamente...</p></div>
+                        <div class="guide-content">
+                            <h4>3.1 Signos vitales (p. 31)</h4>
+                            <p>Tablas de referencia para valores normales de Frecuencia Respiratoria (FR), Frecuencia Cardíaca (FC) y Tensión Arterial (TA) por edad. Define hipotensión.</p>
+                            <h4>3.2 Valores de laboratorio (p. 31-32)</h4>
+                            <p>Tablas con valores normales de Hemoglobina (Hb) y Hematocrito (Hto) durante la infancia, adolescencia y los primeros 3 meses de vida según peso al nacer.</p>
+                            <h4>3.3 Escalas y scores (p. 32-34)</h4>
+                            <p>Presenta herramientas clave de evaluación: Triángulo de Evaluación Pediátrica (TEP), Score de TAL, Pulmonary Score (asma), tabla de FiO2 según dispositivos de O2, Fórmula de Schwartz (Filtrado Glomerular) y Escala de Glasgow (adulto y lactante).</p>
+                            <h4>3.4 Solicitar laboratorios (p. 35-38)</h4>
+                            <p>Listado de perfiles de laboratorio sugeridos para situaciones clínicas específicas, como Politrauma, Sepsis, Quemados, Lisis Tumoral, Desnutrición, Debut Leucémico y MIS-C.</p>
+                            <h4>3.5 Fórmulas útiles (p. 38-39)</h4>
+                            <p>Recopilación de fórmulas esenciales: Balance de Ingresos y Egresos, Pérdidas Insensibles (PI), Superficie Corporal (SC), Ritmo Diurético (RD) y Flujo de Dextrosa.</p>
+                            <h4>3.6 CIE 10 Más Usados (p. 39-40)</h4>
+                            <p>Lista de códigos CIE 10 de patologías frecuentes, agrupados por especialidad (Respiratorio, Nefrología, Infectología, etc.).</p>
+                        </div>
                     </details>
                     <details>
                         <summary>4. Crecimiento y Desarrollo <i data-feather="chevron-down" class="w-5 h-5"></i></summary>
@@ -2649,6 +2634,8 @@
     </script>
 </body>
 </html>
+
+
 
 
 
