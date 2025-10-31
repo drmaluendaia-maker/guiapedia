@@ -147,12 +147,60 @@
             <!-- Página de Calculadoras -->
             <div id="calculators-page" class="page">
                 <button onclick="showPage('main-menu')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
-                <div class="space-y-4">
-                     <button onclick="showPage('php-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Plan de Hidratación Parenteral (PHP)</button>
-                     <button onclick="showPage('disnatremias-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Corrección de Disnatremias</button>
-                     <button onclick="showPage('scores-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Scores Clínicos</button>
-                     <button onclick="showPage('acidobase-cad-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Estado Ácido-Base (EAB)</button>
-                     <button onclick="showPage('cad-treatment-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Tratamiento Cetoacidosis (CAD)</button>
+                <div class="space-y-6">
+                    
+                    <!-- Hidratación y Medio Interno -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2 text-indigo-700">Hidratación y Medio Interno</h3>
+                        <div class="space-y-2">
+                            <button onclick="showPage('php-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Plan de Hidratación Parenteral (PHP)</button>
+                            <button onclick="showPage('disnatremias-calculator-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Corrección de Disnatremias</button>
+                            <button onclick="showPage('acidobase-cad-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Estado Ácido-Base (EAB)</button>
+                            <button onclick="showPage('cad-treatment-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Tratamiento Cetoacidosis (CAD)</button>
+                            <button onclick="showPage('flujo-dextrosa-page')" class="w-full text-left bg-indigo-50 p-4 rounded-lg hover:bg-indigo-100 transition">Flujo de Dextrosa</button>
+                        </div>
+                    </div>
+
+                    <!-- Scores Clínicos -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2 text-green-700">Scores Clínicos</h3>
+                        <div class="space-y-2">
+                            <button onclick="showPage('scores-calculator-page')" class="w-full text-left bg-green-50 p-4 rounded-lg hover:bg-green-100 transition">Score de TAL (Dificultad Respiratoria)</button>
+                            <button onclick="showPage('pulmonary-score-page')" class="w-full text-left bg-green-50 p-4 rounded-lg hover:bg-green-100 transition">Pulmonary Score (Asma)</button>
+                            <button onclick="showPage('glasgow-page')" class="w-full text-left bg-green-50 p-4 rounded-lg hover:bg-green-100 transition">Score de Glasgow Pediátrico</button>
+                            <button onclick="showPage('greenes-score-page')" class="w-full text-left bg-green-50 p-4 rounded-lg hover:bg-green-100 transition">Score de Greenes (TEC < 2 años)</button>
+                            <button onclick="showPage('rochester-criteria-page')" class="w-full text-left bg-green-50 p-4 rounded-lg hover:bg-green-100 transition">Criterios de Rochester (IBG)</button>
+                        </div>
+                    </div>
+
+                    <!-- Fórmulas Generales -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2 text-gray-700">Fórmulas Generales y Nefrología</h3>
+                        <div class="space-y-2">
+                            <button onclick="showPage('sc-page')" class="w-full text-left bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">Superficie Corporal</button>
+                            <button onclick="showPage('fg-schwartz-page')" class="w-full text-left bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">Filtrado Glomerular (Schwartz)</button>
+                            <button onclick="showPage('prot-crea-page')" class="w-full text-left bg-gray-100 p-4 rounded-lg hover:bg-gray-200 transition">Índice Proteinuria/Creatinuria</button>
+                        </div>
+                    </div>
+
+                    <!-- Urgencias / Especializadas -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2 text-red-700">Urgencias / Especializadas</h3>
+                        <div class="space-y-2">
+                            <button onclick="showPage('lund-browder-page')" class="w-full text-left bg-red-50 p-4 rounded-lg hover:bg-red-100 transition">Calculadora de Quemados (Lund-Browder)</button>
+                            <button onclick="showPage('galveston-page')" class="w-full text-left bg-red-50 p-4 rounded-lg hover:bg-red-100 transition">Hidratación en Quemados (Galveston)</button>
+                            <button onclick="showPage('lisis-tumoral-page')" class="w-full text-left bg-red-50 p-4 rounded-lg hover:bg-red-100 transition">Score de Lisis Tumoral (Cairo-Bishop)</button>
+                        </div>
+                    </div>
+
+                    <!-- Nutrición -->
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2 text-blue-700">Nutrición</h3>
+                        <div class="space-y-2">
+                            <button onclick="showPage('reconstitucion-leche-page')" class="w-full text-left bg-blue-50 p-4 rounded-lg hover:bg-blue-100 transition">Reconstitución de Leche</button>
+                        </div>
+                    </div>
+
                 </div>
             </div>
             
@@ -605,6 +653,577 @@
                                 </ul>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Calculadora Flujo de Dextrosa -->
+            <div id="flujo-dextrosa-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Calculadora de Flujo de Dextrosa</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <div>
+                            <label for="fd-goteo" class="block text-sm font-medium text-gray-700">Goteo (ml/h)</label>
+                            <input type="number" id="fd-goteo" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 80">
+                        </div>
+                        <div>
+                            <label for="fd-dextrosa" class="block text-sm font-medium text-gray-700">% de Dextrosa</label>
+                            <input type="number" id="fd-dextrosa" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 5">
+                        </div>
+                        <div>
+                            <label for="fd-peso" class="block text-sm font-medium text-gray-700">Peso (kg)</label>
+                            <input type="number" id="fd-peso" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 15">
+                        </div>
+                    </div>
+                    <div class="mt-6"><button onclick="calcularFlujoDextrosa()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Flujo</button></div>
+                    <div id="resultado-fd" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div class="result-card p-4 rounded-lg space-y-3">
+                            <p><strong>Flujo de Glucosa:</strong> <span id="fd-result" class="font-mono text-xl"></span> mg/kg/min</p>
+                            <p><strong>Interpretación:</strong> <span id="fd-interpretacion" class="font-semibold"></span></p>
+                        </div>
+                        <div id="detalles-fd-content" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Pulmonary Score (Asma) -->
+            <div id="pulmonary-score-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Pulmonary Score (Crisis de Asma)</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="ps-edad" class="block text-sm font-medium text-gray-700">Grupo de Edad</label>
+                            <select id="ps-edad" onchange="actualizarFRPulmonary()" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="menor">&lt; 6 años</option>
+                                <option value="mayor">&ge; 6 años</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="ps-fr" class="block text-sm font-medium text-gray-700">Frecuencia Respiratoria</label>
+                            <select id="ps-fr" class="mt-1 block w-full rounded-md select-field p-2"></select>
+                        </div>
+                        <div>
+                            <label for="ps-sibilancias" class="block text-sm font-medium text-gray-700">Sibilancias</label>
+                            <select id="ps-sibilancias" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="0">No</option>
+                                <option value="1">Final espiración</option>
+                                <option value="2">Toda la espiración (estetoscopio)</option>
+                                <option value="3">Inspiración y espiración (sin estetoscopio)</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="ps-ecm" class="block text-sm font-medium text-gray-700">Uso de Esternocleidomastoideo</label>
+                            <select id="ps-ecm" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="0">No</option>
+                                <option value="1">Incremento leve</option>
+                                <option value="2">Aumentado</option>
+                                <option value="3">Actividad máxima</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6"><button onclick="calcularPulmonaryScore()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Pulmonary Score</button></div>
+                    <div id="resultado-ps" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div id="resultado-ps-content" class="result-card p-4 rounded-lg space-y-2"></div>
+                        <div id="detalles-ps-content" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Score de Glasgow Pediátrico -->
+            <div id="glasgow-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Score de Glasgow Pediátrico (p. 34)</h2>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label for="gcs-ocular" class="block text-sm font-medium text-gray-700">Apertura Ocular</label>
+                            <select id="gcs-ocular" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="4">Espontánea</option>
+                                <option value="3">Al hablarle</option>
+                                <option value="2">Con dolor</option>
+                                <option value="1">Ausencia</option>
+                            </select>
+                        </div>
+                        
+                        <div>
+                            <label for="gcs-verbal" class="block text-sm font-medium text-gray-700">Respuesta Verbal (Seleccione edad)</label>
+                            <select id="gcs-verbal" class="mt-1 block w-full rounded-md select-field p-2">
+                                <optgroup label="Lactantes (< 2 años)">
+                                    <option value="5">Balbuceo, palabras y frases adecuadas, sonríe, llora</option>
+                                    <option value="4">Palabras inadecuadas, llanto continuo</option>
+                                    <option value="3">Llanto y gritos exagerados</option>
+                                    <option value="2">Gruñidos</option>
+                                    <option value="1">Ausencia</option>
+                                </optgroup>
+                                <optgroup label="Niños (> 2 años)">
+                                    <option value="5">Orientado</option>
+                                    <option value="4">Confuso</option>
+                                    <option value="3">Palabras inadecuadas</option>
+                                    <option value="2">Sonidos inespecíficos</option>
+                                    <option value="1">Ausencia</option>
+                                </optgroup>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="gcs-motora" class="block text-sm font-medium text-gray-700">Respuesta Motora</label>
+                            <select id="gcs-motora" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="6">Movimientos espontáneos / Obedece órdenes</option>
+                                <option value="5">Localiza dolor</option>
+                                <option value="4">Retirada al dolor</option>
+                                <option value="3">Flexión anormal (Decorticación)</option>
+                                <option value="2">Extensión anormal (Descerebración)</option>
+                                <option value="1">Ausencia</option>
+                            </select>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6"><button onclick="calcularGlasgow()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Glasgow</button></div>
+                    
+                    <div id="resultado-gcs" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div class="result-card p-4 rounded-lg space-y-2">
+                            <p><strong>Puntaje Total:</strong> <span id="gcs-result" class="font-mono text-2xl font-bold"></span> / 15</p>
+                            <p><strong>Interpretación:</strong> <span id="gcs-interpretacion" class="font-semibold"></span></p>
+                        </div>
+                        <div id="detalles-gcs-content" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Score de Greenes -->
+            <div id="greenes-score-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Score de Greenes (TEC Leve < 2 años)</h2>
+                    <p class="text-sm text-gray-600 mb-4">Evalúa el riesgo de Lesión Intracraneal (LIC) en TEC leves (Glasgow 14-15) en menores de 2 años (p. 164).</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="greenes-mecanismo" value="2" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Mecanismo de alto riesgo (Caída > 1.5m, AVP, impacto alta energía)</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="greenes-sensorio" value="2" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Alteración del sensorio (Somnolencia, irritabilidad)</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="greenes-fractura" value="2" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Fractura de cráneo palpable o hundimiento</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="greenes-hematoma" value="1" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Hematoma epicraneal (No frontal) > 3 cm</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="greenes-vomitos" value="1" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Vómitos > 3 episodios</span>
+                        </label>
+                    </div>
+                    
+                    <div class="mt-6"><button onclick="calcularGreenes()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Score</button></div>
+                    
+                    <div id="resultado-greenes" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div id="resultado-greenes-content" class="result-card p-4 rounded-lg space-y-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Calculadora Superficie Corporal -->
+            <div id="sc-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Calculadora de Superficie Corporal</h2>
+                    <div>
+                        <label for="sc-peso" class="block text-sm font-medium text-gray-700">Peso (kg)</label>
+                        <input type="number" id="sc-peso" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 15">
+                    </div>
+                    <div class="mt-6"><button onclick="calcularSC()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular SC</button></div>
+                    <div id="resultado-sc" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div class="result-card p-4 rounded-lg space-y-3">
+                            <p><strong>Superficie Corporal (SC):</strong> <span id="sc-result" class="font-mono text-xl"></span> m²</p>
+                        </div>
+                        <div id="detalles-sc-content" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Calculadora Filtrado Glomerular (Schwartz) -->
+            <div id="fg-schwartz-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Filtrado Glomerular (Fórmula de Schwartz)</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="fg-talla" class="block text-sm font-medium text-gray-700">Talla (cm)</label>
+                            <input type="number" id="fg-talla" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 100">
+                        </div>
+                        <div>
+                            <label for="fg-creatinina" class="block text-sm font-medium text-gray-700">Creatinina Sérica (mg/dL)</label>
+                            <input type="number" id="fg-creatinina" step="0.1" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 0.8">
+                        </div>
+                        <div>
+                            <label for="fg-k" class="block text-sm font-medium text-gray-700">Constante (K)</label>
+                            <select id="fg-k" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="0.33">RN Bajo Peso (< 1 año)</option>
+                                <option value="0.45">RN de Término (< 1 año)</option>
+                                <option value="0.55" selected>Niños (2-12 años)</option>
+                                <option value="0.60">Adolescente Mujer (13-21 años)</option>
+                                <option value="0.70">Adolescente Varón (13-21 años)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6"><button onclick="calcularSchwartz()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular FG</button></div>
+                    <div id="resultado-fg" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div class="result-card p-4 rounded-lg space-y-3">
+                            <p><strong>Filtrado Glomerular:</strong> <span id="fg-result" class="font-mono text-xl"></span> ml/min/1.73m²</p>
+                        </div>
+                        <div id="detalles-fg-content" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Índice Proteinuria/Creatinuria -->
+            <div id="prot-crea-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Índice Proteinuria/Creatinuria</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="pc-prot" class="block text-sm font-medium text-gray-700">Proteinuria (muestra aislada mg/dL)</label>
+                            <input type="number" id="pc-prot" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 30">
+                        </div>
+                        <div>
+                            <label for="pc-crea" class="block text-sm font-medium text-gray-700">Creatinuria (muestra aislada mg/dL)</label>
+                            <input type="number" id="pc-crea" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 50">
+                        </div>
+                    </div>
+                    <div class="mt-6"><button onclick="calcularProtCrea()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Índice</button></div>
+                    <div id="resultado-pc" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div class="result-card p-4 rounded-lg space-y-3">
+                            <p><strong>Índice Prot/Crea:</strong> <span id="pc-result" class="font-mono text-xl"></span> (mg/mg)</p>
+                            <p><strong>Interpretación:</strong> <span id="pc-interpretacion" class="font-semibold"></span></p>
+                        </div>
+                        <div id="detalles-pc-content" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Criterios de Rochester -->
+            <div id="rochester-criteria-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Criterios de Rochester (Riesgo IBG)</h2>
+                    <p class="text-sm text-gray-600 mb-4">Para lactantes febriles (30-90 días) sin foco (p. 212). Marque todos los criterios que cumple el paciente.</p>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="roch-aspecto" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Buen aspecto general</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="roch-antecedentes" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Previamente sano (Sin prematurez, sin ATB previos, sin hospitalización)</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="roch-infeccion-piel" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Sin infección evidente de piel, tejidos blandos, hueso, articulación u oído</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="roch-leucos" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Leucocitos en sangre: 5.000 - 15.000 /mm³</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="roch-cayados" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Cayados (bandas) en sangre: < 1.500 /mm³</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="roch-orina" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Sedimento de orina: < 10 leucocitos por campo</span>
+                        </label>
+                    </div>
+                    
+                    <div class="mt-6"><button onclick="calcularRochester()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Evaluar Riesgo</button></div>
+                    
+                    <div id="resultado-rochester" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div id="resultado-rochester-content" class="result-card p-4 rounded-lg space-y-2"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Score de Lisis Tumoral -->
+            <div id="lisis-tumoral-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Score de Lisis Tumoral (Cairo-Bishop)</h2>
+                    
+                    <h3 class="text-lg font-medium text-gray-700 mb-2">Criterios de Laboratorio</h3>
+                    <div class="space-y-4">
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div>
+                                <label for="slt-urico" class="block text-sm font-medium text-gray-700">Ácido Úrico (mg/dL)</label>
+                                <input type="number" id="slt-urico" step="0.1" class="mt-1 block w-full rounded-md input-field p-2" placeholder="> 8">
+                            </div>
+                            <div>
+                                <label for="slt-k" class="block text-sm font-medium text-gray-700">Potasio (mEq/L)</label>
+                                <input type="number" id="slt-k" step="0.1" class="mt-1 block w-full rounded-md input-field p-2" placeholder="> 6">
+                            </div>
+                            <div>
+                                <label for="slt-p" class="block text-sm font-medium text-gray-700">Fósforo (mEq/L)</label>
+                                <input type="number" id="slt-p" step="0.1" class="mt-1 block w-full rounded-md input-field p-2" placeholder="> 6.5">
+                            </div>
+                            <div>
+                                <label for="slt-ca" class="block text-sm font-medium text-gray-700">Calcio (mEq/L)</label>
+                                <input type="number" id="slt-ca" step="0.1" class="mt-1 block w-full rounded-md input-field p-2" placeholder="< 1.75">
+                            </div>
+                        </div>
+                        <p class="text-xs text-gray-500">Nota: O un aumento/disminución del 25% del basal para cada valor.</p>
+                    </div>
+
+                    <h3 class="text-lg font-medium text-gray-700 mt-6 mb-2">Criterios Clínicos</h3>
+                    <div class="space-y-3">
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="slt-creatinina" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Fallo Renal (Creatinina > 1.5 x LSN para la edad)</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="slt-arritmia" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Arritmia cardíaca / Muerte súbita</span>
+                        </label>
+                        <label class="flex items-center p-3 bg-gray-50 rounded-lg border">
+                            <input type="checkbox" id="slt-convulsion" class="h-5 w-5 text-indigo-600 focus:ring-indigo-500">
+                            <span class="ml-3 text-sm">Convulsiones</span>
+                        </label>
+                    </div>
+                    
+                    <div class="mt-6"><button onclick="calcularLisisTumoral()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Evaluar Riesgo</button></div>
+                    
+                    <div id="resultado-slt" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div id="resultado-slt-content" class="result-card p-4 rounded-lg space-y-2"></div>
+                        <div id="detalles-slt-content" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Calculadora de Quemados (Lund-Browder) -->
+            <div id="lund-browder-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Calculadora de Quemados (Lund-Browder)</h2>
+                    <p class="text-sm text-gray-600 mb-4">Ingrese el porcentaje de quemadura (solo Tipo AB y B) para cada área corporal. La tabla ajusta los % de Cabeza, Muslos y Piernas según la edad.</p>
+                    
+                    <div class="space-y-4">
+                        <div>
+                            <label for="lb-edad" class="block text-sm font-medium text-gray-700">Grupo de Edad</label>
+                            <select id="lb-edad" onchange="actualizarValoresLB()" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="<1">< 1 año</option>
+                                <option value="1-4">1-4 años</option>
+                                <option value="5-9" selected>5-9 años</option>
+                                <option value="10-14">10-14 años</option>
+                                <option value="15+">≥ 15 años</option>
+                            </select>
+                        </div>
+
+                        <div class="overflow-x-auto">
+                            <table class="min-w-full divide-y divide-gray-200">
+                                <thead class="bg-gray-50">
+                                    <tr>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">Área Corporal</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">% SC (Tabla)</th>
+                                        <th class="px-4 py-2 text-left text-xs font-medium text-gray-500 uppercase">% Quemado (0-100)</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="bg-white divide-y divide-gray-200">
+                                    <tr>
+                                        <td class="px-4 py-2">Cabeza (A)</td>
+                                        <td class="px-4 py-2"><span id="lb-val-cabeza">13</span>%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-cabeza" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Cuello</td>
+                                        <td class="px-4 py-2">2%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-cuello" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Tronco Anterior</td>
+                                        <td class="px-4 py-2">13%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-tronco-ant" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Tronco Posterior</td>
+                                        <td class="px-4 py-2">13%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-tronco-post" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Glúteo Derecho</td>
+                                        <td class="px-4 py-2">2.5%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-gluteo-d" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Glúteo Izquierdo</td>
+                                        <td class="px-4 py-2">2.5%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-gluteo-i" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Genitales</td>
+                                        <td class="px-4 py-2">1%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-genitales" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr><td colspan="3" class="bg-gray-50 px-4 py-1 text-sm font-medium">Brazos</td></tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Brazo Sup. Derecho</td>
+                                        <td class="px-4 py-2">2%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-brazo-sup-d" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Brazo Sup. Izquierdo</td>
+                                        <td class="px-4 py-2">2%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-brazo-sup-i" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Brazo Inf. Derecho</td>
+                                        <td class="px-4 py-2">1.5%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-brazo-inf-d" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Brazo Inf. Izquierdo</td>
+                                        <td class="px-4 py-2">1.5%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-brazo-inf-i" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Mano Derecha</td>
+                                        <td class="px-4 py-2">1.25%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-mano-d" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Mano Izquierda</td>
+                                        <td class="px-4 py-2">1.25%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-mano-i" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr><td colspan="3" class="bg-gray-50 px-4 py-1 text-sm font-medium">Piernas</td></tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Muslo Derecho (B)</td>
+                                        <td class="px-4 py-2"><span id="lb-val-muslo">4</span>%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-muslo-d" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Muslo Izquierdo (B)</td>
+                                        <td class="px-4 py-2"><span id="lb-val-muslo-i">4</span>%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-muslo-i" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Pierna Derecha (C)</td>
+                                        <td class="px-4 py-2"><span id="lb-val-pierna">3</span>%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-pierna-d" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Pierna Izquierda (C)</td>
+                                        <td class="px-4 py-2"><span id="lb-val-pierna-i">3</span>%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-pierna-i" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Pie Derecho</td>
+                                        <td class="px-4 py-2">1.75%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-pie-d" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="px-4 py-2">Pie Izquierdo</td>
+                                        <td class="px-4 py-2">1.75%</td>
+                                        <td class="px-4 py-2"><input type="number" id="lb-in-pie-i" class="w-24 rounded-md input-field p-1" value="0" min="0" max="100"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-6"><button onclick="calcularLundBrowder()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular SCQ</button></div>
+                    
+                    <div id="resultado-lb" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Resultado:</h3>
+                        <div class="result-card p-4 rounded-lg space-y-2">
+                            <p><strong>Superficie Corporal Quemada (SCQ) Total (AB+B):</strong> <span id="lb-result" class="font-mono text-2xl font-bold"></span> %</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Calculadora Hidratación en Quemados (Galveston) -->
+            <div id="galveston-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Hidratación en Quemados (Galveston)</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <label for="galv-peso" class="block text-sm font-medium text-gray-700">Peso (kg)</label>
+                            <input type="number" id="galv-peso" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 20">
+                        </div>
+                        <div>
+                            <label for="galv-scq" class="block text-sm font-medium text-gray-700">% SCQ (AB+B)</label>
+                            <input type="number" id="galv-scq" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 25">
+                        </div>
+                    </div>
+                    <div class="mt-6"><button onclick="calcularGalveston()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Plan de Hidratación</button></div>
+                    <div id="resultado-galv" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Propuesta de Tratamiento (Primeras 24h):</h3>
+                        <div class="result-card p-4 rounded-lg space-y-3">
+                            <p><strong>Superficie Corporal Total (SCT):</strong> <span id="galv-sct" class="font-mono"></span> m²</p>
+                            <p><strong>Superficie Corporal Quemada (SCQ):</strong> <span id="galv-scq-m2" class="font-mono"></span> m²</p>
+                            <hr class="my-3 border-indigo-200">
+                            <p><strong>Volumen Total para 24h:</strong> <span id="galv-vol-total" class="font-mono text-xl"></span> ml</p>
+                            <p><strong>Goteo (primeras 8h):</strong> <span id="galv-goteo-8h" class="font-mono font-bold text-indigo-800 text-xl"></span> ml/h</p>
+                            <p><strong>Goteo (siguientes 16h):</strong> <span id="galv-goteo-16h" class="font-mono font-bold text-indigo-800 text-xl"></span> ml/h</p>
+                            <p class="text-sm text-indigo-700 mt-2"><strong>Fluido:</strong> Ringer-lactato (o Dextrosa 5% en < 1 año).</p>
+                        </div>
+                        <div id="detalles-galv-content" class="mt-4"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Página Calculadora Reconstitución de Leche -->
+            <div id="reconstitucion-leche-page" class="page">
+                <button onclick="showPage('calculators-page')" class="btn-secondary mb-4 px-4 py-2 rounded-lg flex items-center"><i data-feather="arrow-left" class="w-4 h-4 mr-2"></i> Volver</button>
+                <div class="card p-6">
+                    <h2 class="text-xl font-semibold mb-4 border-b pb-2">Calculadora de Reconstitución de Leche</h2>
+                    <div class="space-y-4">
+                        <div>
+                            <label for="leche-volumen" class="block text-sm font-medium text-gray-700">Volumen Final Deseado (ml)</label>
+                            <input type="number" id="leche-volumen" class="mt-1 block w-full rounded-md input-field p-2" placeholder="Ej: 100">
+                        </div>
+                        <div>
+                            <label for="leche-porcentaje" class="block text-sm font-medium text-gray-700">Porcentaje de Reconstitución (%)</label>
+                            <select id="leche-porcentaje" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="15">15% (Fórmula de inicio < 1 año)</option>
+                                <option value="10">10% (Leche entera > 1 año)</option>
+                                <option value="17">17% (Prematuros)</option>
+                                <option value="custom">Otro...</option>
+                            </select>
+                            <input type="number" id="leche-porcentaje-custom" class="mt-2 block w-full rounded-md input-field p-2 hidden" placeholder="Ingrese %">
+                        </div>
+                        <div>
+                            <label for="leche-tipo" class="block text-sm font-medium text-gray-700">Tipo de Leche</label>
+                            <select id="leche-tipo" class="mt-1 block w-full rounded-md select-field p-2">
+                                <option value="polvo">En Polvo</option>
+                                <option value="liquida">Líquida (Dilución)</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="mt-6"><button onclick="calcularReconstitucionLeche()" class="w-full btn-primary font-bold py-2 px-4 rounded-lg">Calcular Preparación</button></div>
+                    <div id="resultado-leche" class="mt-6 hidden">
+                        <h3 class="font-semibold text-lg mb-2">Preparación:</h3>
+                        <div class="result-card p-4 rounded-lg space-y-3">
+                            <p id="leche-resultado-1"></p>
+                            <p id="leche-resultado-2"></p>
+                        </div>
+                        <div id="detalles-leche-content" class="mt-4"></div>
                     </div>
                 </div>
             </div>
@@ -1236,6 +1855,40 @@
         // Inicializar la calculadora de TAL al cargar la página
         document.addEventListener('DOMContentLoaded', (event) => {
             actualizarFRTal();
+            actualizarFRPulmonary(); // Añadir para la nueva calculadora
+            actualizarValoresLB(); // Añadir para la nueva calculadora
+            
+            // Listener para el % de leche custom
+            document.getElementById('leche-porcentaje').addEventListener('change', function() {
+                if (this.value === 'custom') {
+                    document.getElementById('leche-porcentaje-custom').classList.remove('hidden');
+                } else {
+                    document.getElementById('leche-porcentaje-custom').classList.add('hidden');
+                }
+            });
+            
+            // Listener para tipo de leche
+            document.getElementById('leche-tipo').addEventListener('change', function() {
+                const percSelect = document.getElementById('leche-porcentaje');
+                if (this.value === 'liquida') {
+                    // Ocultar opciones de prematuro y custom para dilución líquida
+                    Array.from(percSelect.options).forEach(opt => {
+                        if (opt.value === '17' || opt.value === 'custom') {
+                            opt.disabled = true;
+                            opt.classList.add('hidden');
+                        }
+                    });
+                    if(percSelect.value === '17' || percSelect.value === 'custom') {
+                        percSelect.value = '15'; // Reset a valor válido
+                    }
+                } else {
+                    // Mostrar todas las opciones para polvo
+                    Array.from(percSelect.options).forEach(opt => {
+                        opt.disabled = false;
+                        opt.classList.remove('hidden');
+                    });
+                }
+            });
         });
 
 
@@ -1257,8 +1910,578 @@
                 });
             });
         });
+
+        // --- Nuevas Funciones de Calculadoras ---
+
+        // Función de ayuda para SC (p. 38, 88)
+        function getSC(peso) {
+            if (isNaN(peso) || peso <= 0) return 0;
+            return ((peso * 4) + 7) / (peso + 90);
+        }
+
+        function calcularSC() {
+            const peso = parseFloat(document.getElementById('sc-peso').value);
+            const resultadoDiv = document.getElementById('resultado-sc');
+            const detallesDiv = document.getElementById('detalles-sc-content');
+
+            if (isNaN(peso) || peso <= 0) {
+                resultadoDiv.classList.add('hidden');
+                return;
+            }
+
+            const sc = getSC(peso);
+            document.getElementById('sc-result').textContent = sc.toFixed(3);
+
+            const htmlDetalles = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Detalles del Cálculo</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        <p>Fórmula de Superficie Corporal (Notti, p. 38, 88):</p>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">SC (m²) = (Peso (kg) * 4 + 7) / (Peso (kg) + 90)</p>
+                    </div>
+                </details>
+            `;
+            detallesDiv.innerHTML = htmlDetalles;
+            resultadoDiv.classList.remove('hidden');
+            feather.replace();
+        }
+
+        function calcularFlujoDextrosa() {
+            const goteo_ml_h = parseFloat(document.getElementById('fd-goteo').value);
+            const porc_dx = parseFloat(document.getElementById('fd-dextrosa').value);
+            const peso = parseFloat(document.getElementById('fd-peso').value);
+            const resultadoDiv = document.getElementById('resultado-fd');
+            const detallesDiv = document.getElementById('detalles-fd-content');
+
+            if (isNaN(goteo_ml_h) || isNaN(porc_dx) || isNaN(peso) || peso <= 0) {
+                resultadoDiv.classList.add('hidden');
+                return;
+            }
+            
+            const volumen_24h = goteo_ml_h * 24;
+            const flujo_mg_kg_min = (volumen_24h * porc_dx) / (peso * 144);
+
+            let interpretacion = 'Normal';
+            if (flujo_mg_kg_min > 6) interpretacion = 'Elevado';
+            if (flujo_mg_kg_min < 3) interpretacion = 'Bajo';
+
+            document.getElementById('fd-result').textContent = flujo_mg_kg_min.toFixed(2);
+            document.getElementById('fd-interpretacion').textContent = interpretacion;
+
+            const htmlDetalles = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Detalles del Cálculo</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        <p>Calcula el aporte de glucosa en miligramos por kilo por minuto (p. 38, 92, 398).</p>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">Volumen 24h = Goteo (ml/h) * 24</p>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">Flujo (mg/kg/min) = (Volumen 24h * % Dextrosa) / (Peso * 144)</p>
+                        <p><strong>Rango Óptimo:</strong> 3-6 mg/kg/min.</p>
+                    </div>
+                </details>
+            `;
+            detallesDiv.innerHTML = htmlDetalles;
+            resultadoDiv.classList.remove('hidden');
+            feather.replace();
+        }
+
+        function actualizarFRPulmonary() {
+            const edad = document.getElementById('ps-edad').value;
+            const frSelect = document.getElementById('ps-fr');
+            frSelect.innerHTML = ''; // Limpiar opciones
+            
+            let opcionesFR;
+            if (edad === 'menor') { // < 6 años
+                opcionesFR = [
+                    { text: '< 30 rpm', value: '0' },
+                    { text: '31-45 rpm', value: '1' },
+                    { text: '46-60 rpm', value: '2' },
+                    { text: '> 60 rpm', value: '3' }
+                ];
+            } else { // >= 6 años
+                opcionesFR = [
+                    { text: '< 20 rpm', value: '0' },
+                    { text: '21-35 rpm', value: '1' },
+                    { text: '36-50 rpm', value: '2' },
+                    { text: '> 50 rpm', value: '3' }
+                ];
+            }
+            
+            opcionesFR.forEach(opcion => {
+                const option = document.createElement('option');
+                option.value = opcion.value;
+                option.textContent = opcion.text;
+                frSelect.appendChild(option);
+            });
+        }
+
+        function calcularPulmonaryScore() {
+            const fr = parseInt(document.getElementById('ps-fr').value);
+            const sibilancias = parseInt(document.getElementById('ps-sibilancias').value);
+            const ecm = parseInt(document.getElementById('ps-ecm').value);
+            
+            const total = fr + sibilancias + ecm;
+            
+            let interpretacion = '';
+            let colorClass = '';
+
+            if (total <= 3) {
+                interpretacion = 'Leve (Puntaje 0-3)';
+                colorClass = 'text-green-700 bg-green-100';
+            } else if (total <= 6) {
+                interpretacion = 'Moderado (Puntaje 4-6)';
+                colorClass = 'text-yellow-700 bg-yellow-100';
+            } else {
+                interpretacion = 'Grave (Puntaje 7-9)';
+                colorClass = 'text-red-700 bg-red-100';
+            }
+
+            const resultadoDiv = document.getElementById('resultado-ps-content');
+            const protocoloDiv = document.getElementById('detalles-ps-content');
+            
+            resultadoDiv.innerHTML = `
+                <p><strong>Puntaje Total:</strong> <span class="font-mono text-2xl font-bold">${total}</span></p>
+                <p><strong>Interpretación:</strong> <span class="font-semibold px-2 py-1 rounded-full ${colorClass}">${interpretacion}</span></p>
+            `;
+            
+            const htmlDetalles = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Guía de Severidad (p. 33)</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        <ul class="list-disc list-inside">
+                            <li><strong>Leve (0-3):</strong> SatO2 > 94%</li>
+                            <li><strong>Moderada (4-6):</strong> SatO2 91-94%</li>
+                            <li><strong>Grave (7-9):</strong> SatO2 < 91%</li>
+                        </ul>
+                        <p class="text-xs">En caso de discordancia entre puntaje y SatO2, se utiliza el de mayor gravedad.</p>
+                    </div>
+                </details>
+            `;
+            protocoloDiv.innerHTML = htmlDetalles;
+
+            document.getElementById('resultado-ps').classList.remove('hidden');
+            feather.replace();
+        }
+
+        // --- Glasgow ---
+        function calcularGlasgow() {
+            const ocular = parseInt(document.getElementById('gcs-ocular').value);
+            const verbal = parseInt(document.getElementById('gcs-verbal').value);
+            const motora = parseInt(document.getElementById('gcs-motora').value);
+            const total = ocular + verbal + motora;
+
+            let interpretacion = '';
+            if (total >= 13) {
+                interpretacion = 'Leve';
+            } else if (total >= 9) {
+                interpretacion = 'Moderado';
+            } else {
+                interpretacion = 'Grave (requiere intubación)';
+            }
+
+            document.getElementById('gcs-result').textContent = total;
+            document.getElementById('gcs-interpretacion').textContent = interpretacion;
+
+            const detallesDiv = document.getElementById('detalles-gcs-content');
+            detallesDiv.innerHTML = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Detalles</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        <p>Score de Glasgow Pediátrico (p. 34).</p>
+                        <ul class="list-disc list-inside">
+                            <li><strong>13-15:</strong> TEC Leve</li>
+                            <li><strong>9-12:</strong> TEC Moderado</li>
+                            <li><strong>3-8:</strong> TEC Grave</li>
+                        </ul>
+                    </div>
+                </details>
+            `;
+            
+            document.getElementById('resultado-gcs').classList.remove('hidden');
+            feather.replace();
+        }
+
+        // --- Score de Greenes ---
+        function calcularGreenes() {
+            let score = 0;
+            if (document.getElementById('greenes-mecanismo').checked) score += 2;
+            if (document.getElementById('greenes-sensorio').checked) score += 2;
+            if (document.getElementById('greenes-fractura').checked) score += 2;
+            if (document.getElementById('greenes-hematoma').checked) score += 1;
+            if (document.getElementById('greenes-vomitos').checked) score += 1;
+
+            let recomendacion = '';
+            let colorClass = '';
+
+            if (score === 0) {
+                recomendacion = 'Bajo Riesgo. Alta con pautas de alarma.';
+                colorClass = 'text-green-700 bg-green-100';
+            } else if (score <= 2) {
+                recomendacion = 'Riesgo Intermedio. Observación por 6 horas.';
+                colorClass = 'text-yellow-700 bg-yellow-100';
+            } else {
+                recomendacion = 'Alto Riesgo (≥ 3 puntos). Evaluar con TAC de cerebro.';
+                colorClass = 'text-red-700 bg-red-100';
+            }
+
+            const resultadoDiv = document.getElementById('resultado-greenes-content');
+            resultadoDiv.innerHTML = `
+                <p><strong>Puntaje Total:</strong> <span class="font-mono text-2xl font-bold">${score}</span></p>
+                <p><strong>Recomendación:</strong> <span class="font-semibold px-2 py-1 rounded-full ${colorClass}">${recomendacion}</span></p>
+            `;
+            document.getElementById('resultado-greenes').classList.remove('hidden');
+        }
+
+        // --- Calculadora Schwartz ---
+        function calcularSchwartz() {
+            const talla = parseFloat(document.getElementById('fg-talla').value);
+            const creatinina = parseFloat(document.getElementById('fg-creatinina').value);
+            const k = parseFloat(document.getElementById('fg-k').value);
+            const resultadoDiv = document.getElementById('resultado-fg');
+            const detallesDiv = document.getElementById('detalles-fg-content');
+
+            if (isNaN(talla) || isNaN(creatinina) || creatinina <= 0) {
+                resultadoDiv.classList.add('hidden');
+                return;
+            }
+
+            const fg = (k * talla) / creatinina;
+            document.getElementById('fg-result').textContent = fg.toFixed(2);
+
+            detallesDiv.innerHTML = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Detalles del Cálculo</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        <p>Fórmula de Schwartz (p. 34):</p>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">FG (ml/min/1.73m²) = (K * Talla (cm)) / Creatinina Sérica (mg/dL)</p>
+                    </div>
+                </details>
+            `;
+            
+            resultadoDiv.classList.remove('hidden');
+            feather.replace();
+        }
+
+        // --- Índice Prot/Crea ---
+        function calcularProtCrea() {
+            const prot = parseFloat(document.getElementById('pc-prot').value);
+            const crea = parseFloat(document.getElementById('pc-crea').value);
+            const resultadoDiv = document.getElementById('resultado-pc');
+            const detallesDiv = document.getElementById('detalles-pc-content');
+
+            if (isNaN(prot) || isNaN(crea) || crea <= 0) {
+                resultadoDiv.classList.add('hidden');
+                return;
+            }
+
+            const ratio = prot / crea;
+            let interpretacion = '';
+            if (ratio > 2.0) { // Notti p. 362, >2-3
+                interpretacion = 'Rango Nefrótico';
+            } else if (ratio > 0.2) {
+                interpretacion = 'Proteinuria (Patológico)';
+            } else {
+                interpretacion = 'Normal';
+            }
+
+            document.getElementById('pc-result').textContent = ratio.toFixed(2);
+            document.getElementById('pc-interpretacion').textContent = interpretacion;
+            
+            detallesDiv.innerHTML = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Detalles del Cálculo</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        <p>Estima la proteinuria de 24h en una muestra aislada (p. 359, 362).</p>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">Índice = Proteinuria (mg/dL) / Creatinuria (mg/dL)</p>
+                        <ul class="list-disc list-inside text-xs">
+                            <li><strong>Normal:</strong> < 0.2</li>
+                            <li><strong>Patológico:</strong> > 0.2</li>
+                            <li><strong>Rango Nefrótico:</strong> > 2.0 - 3.0</li>
+                        </ul>
+                    </div>
+                </details>
+            `;
+
+            resultadoDiv.classList.remove('hidden');
+            feather.replace();
+        }
+
+        // --- Criterios de Rochester ---
+        function calcularRochester() {
+            const aspecto = document.getElementById('roch-aspecto').checked;
+            const antecedentes = document.getElementById('roch-antecedentes').checked;
+            const infeccionPiel = document.getElementById('roch-infeccion-piel').checked;
+            const leucos = document.getElementById('roch-leucos').checked;
+            const cayados = document.getElementById('roch-cayados').checked;
+            const orina = document.getElementById('roch-orina').checked;
+
+            const esBajoRiesgo = aspecto && antecedentes && infeccionPiel && leucos && cayados && orina;
+
+            const resultadoDiv = document.getElementById('resultado-rochester-content');
+            
+            if (esBajoRiesgo) {
+                resultadoDiv.innerHTML = `
+                    <p><strong>Resultado:</strong> <span class="font-semibold px-2 py-1 rounded-full text-green-700 bg-green-100">BAJO RIESGO</span></p>
+                    <p>El paciente cumple todos los criterios de bajo riesgo para Infección Bacteriana Grave (IBG).</p>
+                `;
+            } else {
+                resultadoDiv.innerHTML = `
+                    <p><strong>Resultado:</strong> <span class="font-semibold px-2 py-1 rounded-full text-red-700 bg-red-100">ALTO RIESGO</span></p>
+                    <p>El paciente NO cumple todos los criterios. Considerar manejo como Alto Riesgo de IBG.</p>
+                `;
+            }
+            document.getElementById('resultado-rochester').classList.remove('hidden');
+        }
+
+        // --- Score Lisis Tumoral ---
+        function calcularLisisTumoral() {
+            const urico = parseFloat(document.getElementById('slt-urico').value) || 0;
+            const k = parseFloat(document.getElementById('slt-k').value) || 0;
+            const p = parseFloat(document.getElementById('slt-p').value) || 0;
+            const ca = parseFloat(document.getElementById('slt-ca').value) || 10; // Default a normal si no se ingresa
+
+            const crea = document.getElementById('slt-creatinina').checked;
+            const arritmia = document.getElementById('slt-arritmia').checked;
+            const convulsion = document.getElementById('slt-convulsion').checked;
+
+            let lab_score = 0;
+            if (urico >= 8) lab_score++;
+            if (k >= 6) lab_score++;
+            if (p >= 6.5) lab_score++; // Asumiendo p. 505
+            if (ca <= 1.75) lab_score++; // Asumiendo p. 505
+
+            let clin_score = 0;
+            if (crea) clin_score++;
+            if (arritmia) clin_score++;
+            if (convulsion) clin_score++;
+
+            let diagnostico = "Sin criterios de SLT.";
+            let colorClass = "text-green-700 bg-green-100";
+
+            if (lab_score >= 2) {
+                diagnostico = "Síndrome de Lisis Tumoral de Laboratorio";
+                colorClass = "text-yellow-700 bg-yellow-100";
+            }
+            
+            if (lab_score >= 2 && clin_score >= 1) {
+                diagnostico = "Síndrome de Lisis Tumoral Clínico";
+                colorClass = "text-red-700 bg-red-100";
+            }
+
+            const resultadoDiv = document.getElementById('resultado-slt-content');
+            resultadoDiv.innerHTML = `
+                <p><strong>Diagnóstico:</strong> <span class="font-semibold px-2 py-1 rounded-full ${colorClass}">${diagnostico}</span></p>
+                <p>Criterios de Laboratorio: ${lab_score} / Criterios Clínicos: ${clin_score}</p>
+            `;
+
+            const detallesDiv = document.getElementById('detalles-slt-content');
+            detallesDiv.innerHTML = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Criterios (Cairo-Bishop, p. 505)</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        <p><strong>SLT de Laboratorio:</strong> 2 o más criterios de laboratorio (o aumento/descenso del 25% del basal).</p>
+                        <p><strong>SLT Clínico:</strong> SLT de Laboratorio + 1 o más criterios clínicos (Fallo renal, Arritmia, Convulsión).</p>
+                    </div>
+                </details>
+            `;
+            
+            document.getElementById('resultado-slt').classList.remove('hidden');
+            feather.replace();
+        }
+
+        // --- Lund-Browder ---
+        const lundTable = {
+            // A/2, B, C (Tabla 1, p. 168)
+            "<1": { A: 9.5, B: 2.75, C: 2.5 },
+            "1-4": { A: 8.5, B: 3.25, C: 2.5 },
+            "5-9": { A: 6.5, B: 4.0, C: 2.75 },
+            "10-14": { A: 5.5, B: 4.5, C: 3.0 },
+            "15+": { A: 4.5, B: 4.75, C: 3.25 }
+        };
+
+        const lundFijas = {
+            "cuello": 2, "tronco-ant": 13, "tronco-post": 13, "gluteo-d": 2.5, "gluteo-i": 2.5,
+            "genitales": 1, "brazo-sup-d": 2, "brazo-sup-i": 2, "brazo-inf-d": 1.5, "brazo-inf-i": 1.5,
+            "mano-d": 1.25, "mano-i": 1.25, "pie-d": 1.75, "pie-i": 1.75
+        };
+
+        function actualizarValoresLB() {
+            const edad = document.getElementById('lb-edad').value;
+            const valores = lundTable[edad];
+            
+            document.getElementById('lb-val-cabeza').textContent = (valores.A * 2).toFixed(1); // A
+            document.getElementById('lb-val-muslo').textContent = valores.B.toFixed(2);
+            document.getElementById('lb-val-muslo-i').textContent = valores.B.toFixed(2);
+            document.getElementById('lb-val-pierna').textContent = valores.C.toFixed(2);
+            document.getElementById('lb-val-pierna-i').textContent = valores.C.toFixed(2);
+        }
+
+        function calcularLundBrowder() {
+            const edad = document.getElementById('lb-edad').value;
+            const valores = lundTable[edad];
+            let scq_total = 0;
+
+            const perc = (id) => (parseFloat(document.getElementById(id).value) || 0) / 100;
+
+            // Variables (A, B, C)
+            scq_total += (valores.A * 2) * perc('lb-in-cabeza');
+            scq_total += valores.B * perc('lb-in-muslo-d');
+            scq_total += valores.B * perc('lb-in-muslo-i');
+            scq_total += valores.C * perc('lb-in-pierna-d');
+            scq_total += valores.C * perc('lb-in-pierna-i');
+
+            // Fijas
+            for (const [key, value] of Object.entries(lundFijas)) {
+                scq_total += value * perc(`lb-in-${key.replace('_', '-')}`);
+            }
+
+            document.getElementById('lb-result').textContent = scq_total.toFixed(2);
+            document.getElementById('resultado-lb').classList.remove('hidden');
+        }
+
+        // --- Galveston ---
+        function calcularGalveston() {
+            const peso = parseFloat(document.getElementById('galv-peso').value);
+            const scq_perc = parseFloat(document.getElementById('galv-scq').value);
+            const resultadoDiv = document.getElementById('resultado-galv');
+            const detallesDiv = document.getElementById('detalles-galv-content');
+
+            if (isNaN(peso) || isNaN(scq_perc) || peso <= 0 || scq_perc < 10) {
+                if(scq_perc < 10) {
+                    resultadoDiv.innerHTML = `<p class="text-red-600">La fórmula de Galveston se usa para SCQ > 10% (p. 174).</p>`;
+                }
+                resultadoDiv.classList.remove('hidden');
+                return;
+            }
+
+            const sct = getSC(peso);
+            const scq_m2 = sct * (scq_perc / 100);
+            
+            const vol_24h = (5000 * scq_m2) + (2000 * sct);
+            const goteo_8h = (vol_24h / 2) / 8;
+            const goteo_16h = (vol_24h / 2) / 16;
+
+            document.getElementById('galv-sct').textContent = sct.toFixed(3);
+            document.getElementById('galv-scq-m2').textContent = scq_m2.toFixed(3);
+            document.getElementById('galv-vol-total').textContent = vol_24h.toFixed(0);
+            document.getElementById('galv-goteo-8h').textContent = goteo_8h.toFixed(1);
+            document.getElementById('galv-goteo-16h').textContent = goteo_16h.toFixed(1);
+            
+            detallesDiv.innerHTML = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Detalles del Cálculo (p. 174)</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        <p>Fórmula de Galveston para primeras 24h:</p>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">SCT (m²) = (Peso * 4 + 7) / (Peso + 90)</p>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">SCQ (m²) = SCT * (%SCQ / 100)</p>
+                        <p class="font-mono text-xs bg-gray-100 p-2 rounded">Vol 24h = (5000 * SCQ m²) + (2000 * SCT m²)</p>
+                        <p>Se administra el 50% del volumen en las primeras 8h y el 50% restante en las siguientes 16h.</p>
+                        <p><strong>Ritmo diurético objetivo:</strong> 0.5-1 ml/kg/hora. Ajustar goteo según balance.</p>
+                    </div>
+                </details>
+            `;
+            
+            resultadoDiv.classList.remove('hidden');
+            feather.replace();
+        }
+
+        // --- Reconstitución de Leche ---
+        function calcularReconstitucionLeche() {
+            const volumen = parseFloat(document.getElementById('leche-volumen').value);
+            const tipo = document.getElementById('leche-tipo').value;
+            const percSelect = document.getElementById('leche-porcentaje');
+            let porcentaje;
+
+            if (percSelect.value === 'custom') {
+                porcentaje = parseFloat(document.getElementById('leche-porcentaje-custom').value);
+            } else {
+                porcentaje = parseFloat(percSelect.value);
+            }
+            
+            const resultadoDiv = document.getElementById('resultado-leche');
+            const detallesDiv = document.getElementById('detalles-leche-content');
+
+            if (isNaN(volumen) || isNaN(porcentaje) || volumen <= 0 || porcentaje <= 0) {
+                resultadoDiv.classList.add('hidden');
+                return;
+            }
+
+            let res1 = '', res2 = '';
+            let detalles = '';
+
+            if (tipo === 'polvo') {
+                // Basado en p. 20: 15% -> 1 cda/30ml agua; 10% -> 1 cda/50ml agua; 17% -> 1 cda/20ml agua (aprox)
+                // Usaré la regla de 1 cda = 5g (aprox) y % p/v
+                const gramos_leche = (porcentaje / 100) * volumen;
+                const medidas = gramos_leche / 5; // Asumiendo 1 medida = 5g
+                
+                res1 = `<strong>Leche en Polvo:</strong> <span class="font-mono text-xl">${medidas.toFixed(1)}</span> medidas (aprox. ${gramos_leche.toFixed(1)} g)`;
+                res2 = `<strong>Agua:</strong> <span class="font-mono text-xl">${volumen.toFixed(0)}</span> ml`;
+
+                detalles = `
+                    <p>Cálculo basado en porcentaje peso/volumen (% p/v) asumiendo 1 medida rasa ≈ 5 gramos.</p>
+                    <p class="font-mono text-xs bg-gray-100 p-2 rounded">Gramos = (Volumen * %) / 100</p>
+                    <p class="font-mono text-xs bg-gray-100 p-2 rounded">Medidas = Gramos / 5</p>
+                    <p class="text-xs text-gray-600 mt-2">Nota (p. 20): La guía también sugiere aproximaciones: 15% ≈ 1 medida c/30ml agua. 10% ≈ 1 medida c/50ml agua.</p>
+                `;
+            } else { // líquida
+                const ml_leche = (porcentaje / 100) * volumen;
+                const ml_agua = volumen - ml_leche;
+                
+                res1 = `<strong>Leche Líquida:</strong> <span class="font-mono text-xl">${ml_leche.toFixed(0)}</span> ml`;
+                res2 = `<strong>Agua:</strong> <span class="font-mono text-xl">${ml_agua.toFixed(0)}</span> ml`;
+                
+                detalles = `
+                    <p>Cálculo para diluir leche líquida a un porcentaje deseado (p/v).</p>
+                    <p class="font-mono text-xs bg-gray-100 p-2 rounded">Vol. Leche = (Volumen Total * %) / 100</p>
+                    <p class="font-mono text-xs bg-gray-100 p-2 rounded">Vol. Agua = Volumen Total - Vol. Leche</p>
+                    <p class="text-xs text-gray-600 mt-2">Nota (p. 21-22): Para < 1 año, la guía sugiere diluciones al 50% o 6% (polvo) suplementadas con azúcar y aceite. Esta calculadora realiza una dilución porcentual simple.</p>
+                `;
+            }
+            
+            document.getElementById('leche-resultado-1').innerHTML = res1;
+            document.getElementById('leche-resultado-2').innerHTML = res2;
+
+            detallesDiv.innerHTML = `
+                <details class="mt-4 border-t pt-3">
+                    <summary class="font-medium text-gray-700 flex justify-between items-center">
+                        <span>Ver Detalles del Cálculo (p. 20-22)</span>
+                        <i data-feather="chevron-down" class="w-5 h-5 text-gray-500"></i>
+                    </summary>
+                    <div class="mt-2 text-sm text-gray-600 space-y-2">
+                        ${detalles}
+                    </div>
+                </details>
+            `;
+
+            resultadoDiv.classList.remove('hidden');
+            feather.replace();
+        }
+
     </script>
 </body>
 </html>
-
 
